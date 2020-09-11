@@ -21,6 +21,9 @@ void ofApp::update(){
 
 void ofApp::draw(){
 	
+	ofDrawBitmapStringHighlight(atem.getProductName(), 10, 20);
+	ofDrawBitmapString("switch input:\tarrow-up, arrow-down\nswitch target:\tarrow-left, arrow-right\n", 10, 60);
+
 	std::string s = "";
 	
 	for (const auto& input : atem.getInputMap()) {
@@ -42,9 +45,10 @@ void ofApp::draw(){
 		s += input->portType + "\n";
 		
 	}
-	
-	ofDrawBitmapString(s, 10, 20);
 
+	ofDrawBitmapString(s, 10, 120);
+	
+	
 }
 
 void ofApp::exit() {
