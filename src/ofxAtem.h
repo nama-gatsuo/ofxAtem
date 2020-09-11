@@ -31,7 +31,7 @@ namespace ofxAtem {
 		const std::string& getProductName() const { return productName; }
 
 		const std::vector<ofPtr<Input>>& getInputMap() const { return inputMap; }
-		
+
 		void onMixEffectBlockUpdated(BMDSwitcherMixEffectBlockEventType& e);
 
 	private:
@@ -46,7 +46,7 @@ namespace ofxAtem {
 		CComPtr<IBMDSwitcherStills>	switcherStills;
 		CComQIPtr<IBMDSwitcherFairlightAudioMixer> fairlightAudioMixer;
 		std::string	productName;
-		
+
 		SwitcherMonitor* switcherMonitor;
 		std::vector<InputMonitor*> inputMonitors;
 		std::vector<MixEffectBlockMonitor*> mixEffectBlockMonitors;

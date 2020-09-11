@@ -175,8 +175,7 @@ void print_media_pool_clips(const CComPtr<IBMDSwitcherMediaPool>& mediaPool);
 const char* BSTRToCString(const CComBSTR& str);
 
 template<typename T>
-std::string LookupString(const std::map<T, std::string>& stringMap, T index)
-{
+std::string LookupString(const std::map<T, std::string>& stringMap, T index) {
 	std::string connectFailReasonStr;
 	auto iter = stringMap.find(index);
 

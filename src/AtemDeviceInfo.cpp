@@ -1,30 +1,25 @@
 #include "AtemDeviceInfo.h"
 
 
-void get_switcher_inputs(const CComPtr<IBMDSwitcher>& switcher, std::vector<CComPtr<IBMDSwitcherInput>>& switcherInputs)
-{
+void get_switcher_inputs(const CComPtr<IBMDSwitcher>& switcher, std::vector<CComPtr<IBMDSwitcherInput>>& switcherInputs) {
 	CComPtr<IBMDSwitcherInputIterator> inputIterator;
-	if (switcher->CreateIterator(IID_IBMDSwitcherInputIterator, (void**)&inputIterator) == S_OK)
-	{
+	if (switcher->CreateIterator(IID_IBMDSwitcherInputIterator, (void**)&inputIterator) == S_OK) {
 		CComPtr<IBMDSwitcherInput> input;
 		while (inputIterator->Next(&input) == S_OK)
 			switcherInputs.push_back(std::move(input));
 	}
 }
 
-void get_switcher_mix_effect_blocks(const CComPtr<IBMDSwitcher>& switcher, std::vector<CComPtr<IBMDSwitcherMixEffectBlock>>& mixEffectBlocks)
-{
+void get_switcher_mix_effect_blocks(const CComPtr<IBMDSwitcher>& switcher, std::vector<CComPtr<IBMDSwitcherMixEffectBlock>>& mixEffectBlocks) {
 	CComPtr<IBMDSwitcherMixEffectBlockIterator> mixEffectBlockIterator;
-	if (switcher->CreateIterator(IID_IBMDSwitcherMixEffectBlockIterator, (void**)&mixEffectBlockIterator) == S_OK)
-	{
+	if (switcher->CreateIterator(IID_IBMDSwitcherMixEffectBlockIterator, (void**)&mixEffectBlockIterator) == S_OK) {
 		CComPtr<IBMDSwitcherMixEffectBlock> mixEffectBlock;
 		while (mixEffectBlockIterator->Next(&mixEffectBlock) == S_OK)
 			mixEffectBlocks.push_back(std::move(mixEffectBlock));
 	}
 }
 
-int get_downstream_keyer_count(const CComPtr<IBMDSwitcher>& switcher)
-{
+int get_downstream_keyer_count(const CComPtr<IBMDSwitcher>& switcher) {
 	int											downstreamKeyerCount = 0;
 	CComPtr<IBMDSwitcherDownstreamKeyIterator>	dskIterator;
 	CComPtr<IBMDSwitcherDownstreamKey>			dsk;
@@ -32,8 +27,7 @@ int get_downstream_keyer_count(const CComPtr<IBMDSwitcher>& switcher)
 	if (switcher->CreateIterator(IID_IBMDSwitcherDownstreamKeyIterator, (void**)&dskIterator) != S_OK)
 		return 0;
 
-	while (dskIterator->Next(&dsk) == S_OK)
-	{
+	while (dskIterator->Next(&dsk) == S_OK) {
 		downstreamKeyerCount++;
 		dsk.Release();
 	}
@@ -41,18 +35,15 @@ int get_downstream_keyer_count(const CComPtr<IBMDSwitcher>& switcher)
 	return downstreamKeyerCount;
 }
 
-bool does_support_advanced_chroma_keyers(const std::vector<CComPtr<IBMDSwitcherMixEffectBlock>>& mixEffectBlocks)
-{
-	for (auto& mixEffectBlock : mixEffectBlocks)
-	{
+bool does_support_advanced_chroma_keyers(const std::vector<CComPtr<IBMDSwitcherMixEffectBlock>>& mixEffectBlocks) {
+	for (auto& mixEffectBlock : mixEffectBlocks) {
 		CComPtr<IBMDSwitcherKeyIterator>	keyIterator;
 		CComPtr<IBMDSwitcherKey>			keyer;
 
 		if (mixEffectBlock->CreateIterator(IID_IBMDSwitcherKeyIterator, (void**)&keyIterator) != S_OK)
 			continue;
 
-		while (keyIterator->Next(&keyer) == S_OK)
-		{
+		while (keyIterator->Next(&keyer) == S_OK) {
 			BOOL advancedChromaSupported = FALSE;
 			// Check whether advanced chroma keying is supported by switcher
 			if ((keyer->DoesSupportAdvancedChroma(&advancedChromaSupported) == S_OK) && advancedChromaSupported)
@@ -65,13 +56,11 @@ bool does_support_advanced_chroma_keyers(const std::vector<CComPtr<IBMDSwitcherM
 	return false;
 }
 
-std::string get_product_name(const CComPtr<IBMDSwitcher>& switcher)
-{
+std::string get_product_name(const CComPtr<IBMDSwitcher>& switcher) {
 	CComBSTR productNameString;
 
 	// *** Print the product name of the Switcher
-	if (switcher->GetProductName(&productNameString) != S_OK)
-	{
+	if (switcher->GetProductName(&productNameString) != S_OK) {
 		return "N/A";
 	}
 
@@ -84,8 +73,7 @@ std::string get_product_name(const CComPtr<IBMDSwitcher>& switcher)
 	return productName;
 }
 
-int get_usk_count_for_meb(const CComPtr<IBMDSwitcherMixEffectBlock>& mixEffectBlock)
-{
+int get_usk_count_for_meb(const CComPtr<IBMDSwitcherMixEffectBlock>& mixEffectBlock) {
 	int									upstreamKeyerCount = 0;
 	CComPtr<IBMDSwitcherKeyIterator>	keyIterator;
 	CComPtr<IBMDSwitcherKey>			keyer;
@@ -93,8 +81,7 @@ int get_usk_count_for_meb(const CComPtr<IBMDSwitcherMixEffectBlock>& mixEffectBl
 	if (mixEffectBlock->CreateIterator(IID_IBMDSwitcherKeyIterator, (void**)&keyIterator) != S_OK)
 		return 0;
 
-	while (keyIterator->Next(&keyer) == S_OK)
-	{
+	while (keyIterator->Next(&keyer) == S_OK) {
 		upstreamKeyerCount++;
 		keyer.Release();
 	}
@@ -102,12 +89,10 @@ int get_usk_count_for_meb(const CComPtr<IBMDSwitcherMixEffectBlock>& mixEffectBl
 	return upstreamKeyerCount;
 }
 
-std::vector<std::string> get_transition_styles_for_meb(const CComPtr<IBMDSwitcherMixEffectBlock>& mixEffectBlock)
-{
+std::vector<std::string> get_transition_styles_for_meb(const CComPtr<IBMDSwitcherMixEffectBlock>& mixEffectBlock) {
 	std::vector<std::string>	supportedStyles;
 
-	for (auto& transitionStyle : kSwitcherTransitionStyles)
-	{
+	for (auto& transitionStyle : kSwitcherTransitionStyles) {
 		CComPtr<IUnknown> transitionParameters;
 
 		if (mixEffectBlock->QueryInterface(transitionStyle.first, (void**)&transitionParameters) == S_OK)
@@ -117,12 +102,10 @@ std::vector<std::string> get_transition_styles_for_meb(const CComPtr<IBMDSwitche
 	return supportedStyles;
 }
 
-int get_input_type_count(const std::vector<CComPtr<IBMDSwitcherInput>>& switcherInputs, BMDSwitcherPortType portType)
-{
+int get_input_type_count(const std::vector<CComPtr<IBMDSwitcherInput>>& switcherInputs, BMDSwitcherPortType portType) {
 	int portCount = 0;
 
-	for (auto& input : switcherInputs)
-	{
+	for (auto& input : switcherInputs) {
 		BMDSwitcherPortType type;
 		if ((input->GetPortType(&type) == S_OK) && (type == portType))
 			portCount++;
@@ -131,20 +114,17 @@ int get_input_type_count(const std::vector<CComPtr<IBMDSwitcherInput>>& switcher
 	return portCount;
 }
 
-int get_media_pool_clip_count(const CComPtr<IBMDSwitcherMediaPool>& mediaPool)
-{
+int get_media_pool_clip_count(const CComPtr<IBMDSwitcherMediaPool>& mediaPool) {
 	unsigned int	clipCount;
 	int				validClipCount = 0;
 
 	if (mediaPool->GetClipCount(&clipCount) != S_OK)
 		return 0;
 
-	for (unsigned int i = 0; i < clipCount; i++)
-	{
+	for (unsigned int i = 0; i < clipCount; i++) {
 		// Count only clips marked as valid
 		CComPtr<IBMDSwitcherClip> clip;
-		if (mediaPool->GetClip(i, &clip) == S_OK)
-		{
+		if (mediaPool->GetClip(i, &clip) == S_OK) {
 			BOOL isValid;
 			if ((clip->IsValid(&isValid) == S_OK) && isValid)
 				validClipCount++;
@@ -154,16 +134,14 @@ int get_media_pool_clip_count(const CComPtr<IBMDSwitcherMediaPool>& mediaPool)
 	return validClipCount;
 }
 
-int get_media_pool_stills_count(const CComPtr<IBMDSwitcherStills>& stills)
-{
+int get_media_pool_stills_count(const CComPtr<IBMDSwitcherStills>& stills) {
 	unsigned int	stillsCount;
 	int				validStillsCount = 0;
 
 	if (stills->GetCount(&stillsCount) != S_OK)
 		return 0;
 
-	for (unsigned int i = 0; i < stillsCount; i++)
-	{
+	for (unsigned int i = 0; i < stillsCount; i++) {
 		// Count only stills marked as valid
 		BOOL isValid;
 		if ((stills->IsValid(i, &isValid) == S_OK) && isValid)
@@ -173,13 +151,11 @@ int get_media_pool_stills_count(const CComPtr<IBMDSwitcherStills>& stills)
 	return validStillsCount;
 }
 
-void print_supported_video_modes(const CComPtr<IBMDSwitcher>& switcher)
-{
+void print_supported_video_modes(const CComPtr<IBMDSwitcher>& switcher) {
 	printf("\nSwitcher Video Mode Support:\n");
 	printf(" %-25s%-35s%s\n", "Video Mode", "HD Down Converted Video Mode", "MultiView Video Mode");
 
-	for (auto& mode : kSwitcherVideoModes)
-	{
+	for (auto& mode : kSwitcherVideoModes) {
 		BOOL videoModeSupported;
 		BMDSwitcherVideoMode hdDownConvertedVideoMode;
 		BMDSwitcherVideoMode multiViewVideoMode;
@@ -199,12 +175,10 @@ void print_supported_video_modes(const CComPtr<IBMDSwitcher>& switcher)
 	}
 }
 
-void print_switcher_inputs(const std::vector<CComPtr<IBMDSwitcherInput>>& switcherInputs)
-{
+void print_switcher_inputs(const std::vector<CComPtr<IBMDSwitcherInput>>& switcherInputs) {
 	printf("\nSwitcher Inputs:\n");
 	printf(" %-7s%-12s%-22s%s\n", "ID", "Short Name", "Long Name", "Type");
-	for (auto& input : switcherInputs)
-	{
+	for (auto& input : switcherInputs) {
 		BMDSwitcherPortType portType;
 		BMDSwitcherInputId inputId;
 		BSTR longName[21];
@@ -242,16 +216,14 @@ void print_switcher_inputs(const std::vector<CComPtr<IBMDSwitcherInput>>& switch
 	}
 }
 
-void print_input_availability_matrix(const std::vector<CComPtr<IBMDSwitcherInput>>& switcherInputs, int mixEffectCount)
-{
+void print_input_availability_matrix(const std::vector<CComPtr<IBMDSwitcherInput>>& switcherInputs, int mixEffectCount) {
 	printf("\nSwitcher Input Availability Matrix:\n");
 	printf(" %-7s", "Input");
 	for (int i = 0; i < mixEffectCount; i++)
 		printf("ME%d  ", i);
 	printf("AUX  MV   SSA  SSB  CUT\n");
 
-	for (auto& input : switcherInputs)
-	{
+	for (auto& input : switcherInputs) {
 		BMDSwitcherInputAvailability	inputAvailability;
 		BSTR							shortName[5];
 
@@ -263,12 +235,10 @@ void print_input_availability_matrix(const std::vector<CComPtr<IBMDSwitcherInput
 
 		printf(" %-7s", BSTRToCString(*shortName));
 
-		for (auto availability : kSwitcherInputAvailabilty)
-		{
+		for (auto availability : kSwitcherInputAvailabilty) {
 			if (((mixEffectCount < 2) && (availability == bmdSwitcherInputAvailabilityMixEffectBlock1)) ||
 				((mixEffectCount < 3) && (availability == bmdSwitcherInputAvailabilityMixEffectBlock2)) ||
-				((mixEffectCount < 4) && (availability == bmdSwitcherInputAvailabilityMixEffectBlock3)))
-			{
+				((mixEffectCount < 4) && (availability == bmdSwitcherInputAvailabilityMixEffectBlock3))) {
 				continue;
 			}
 			printf(" %s   ", (availability & inputAvailability) ? "*" : "-");
@@ -277,8 +247,7 @@ void print_input_availability_matrix(const std::vector<CComPtr<IBMDSwitcherInput
 	}
 }
 
-void print_fairlight_audio_inputs(const CComPtr<IBMDSwitcherFairlightAudioMixer>& fairlightAudioMixer, std::vector<CComPtr<IBMDSwitcherInput>>& switcherInputs)
-{
+void print_fairlight_audio_inputs(const CComPtr<IBMDSwitcherFairlightAudioMixer>& fairlightAudioMixer, std::vector<CComPtr<IBMDSwitcherInput>>& switcherInputs) {
 	BMDSwitcherInputId									mediaPlayerTargetId = 0;
 	CComPtr<IBMDSwitcherFairlightAudioInputIterator>	fairlightAudioInputIterator;
 	CComPtr<IBMDSwitcherFairlightAudioInput>			fairlightAudioInput;
@@ -289,8 +258,7 @@ void print_fairlight_audio_inputs(const CComPtr<IBMDSwitcherFairlightAudioMixer>
 	if (fairlightAudioMixer->CreateIterator(IID_IBMDSwitcherFairlightAudioInputIterator, (void**)&fairlightAudioInputIterator) != S_OK)
 		return;
 
-	while (fairlightAudioInputIterator->Next(&fairlightAudioInput) == S_OK)
-	{
+	while (fairlightAudioInputIterator->Next(&fairlightAudioInput) == S_OK) {
 		BMDSwitcherFairlightAudioInputType inputType;
 		BMDSwitcherAudioInputId inputId;
 		BMDSwitcherExternalPortType externalPortType;
@@ -313,29 +281,23 @@ void print_fairlight_audio_inputs(const CComPtr<IBMDSwitcherFairlightAudioMixer>
 			inputId,
 			inputTypeStr.c_str(),
 			externalPortTypeStr.c_str());
-		if (inputType == bmdSwitcherFairlightAudioInputTypeEmbeddedWithVideo)
-		{
+		if (inputType == bmdSwitcherFairlightAudioInputTypeEmbeddedWithVideo) {
 			// Display the short name of the corresponding switcher input
 			CComQIPtr<IBMDSwitcherInput> switcherInput = fairlightAudioInput;
-			if (switcherInput)
-			{
+			if (switcherInput) {
 				BSTR inputShortName[5];
 				if (switcherInput->GetShortName(inputShortName) == S_OK)
 					printf(" - %s", BSTRToCString(*inputShortName));
 			}
-		}
-		else if (inputType == bmdSwitcherFairlightAudioInputTypeMediaPlayer)
-		{
+		} else if (inputType == bmdSwitcherFairlightAudioInputTypeMediaPlayer) {
 			// Cycle through switcher inputs and match port type with Media Player Fill
-			for (auto& switcherInput : switcherInputs)
-			{
+			for (auto& switcherInput : switcherInputs) {
 				BMDSwitcherPortType portType;
 				BMDSwitcherInputId inputId;
 				if ((switcherInput->GetPortType(&portType) == S_OK) &&
 					(portType == bmdSwitcherPortTypeMediaPlayerFill) &&
 					(switcherInput->GetInputId(&inputId) == S_OK) &&
-					(inputId >= mediaPlayerTargetId))
-				{
+					(inputId >= mediaPlayerTargetId)) {
 					BSTR inputShortName[5];
 					if (switcherInput->GetShortName(inputShortName) == S_OK)
 						printf(" - %s", BSTRToCString(*inputShortName));
@@ -351,8 +313,7 @@ void print_fairlight_audio_inputs(const CComPtr<IBMDSwitcherFairlightAudioMixer>
 	}
 }
 
-void print_audio_inputs(const CComPtr<IBMDSwitcherAudioMixer>& audioMixer, std::vector<CComPtr<IBMDSwitcherInput>>& switcherInputs)
-{
+void print_audio_inputs(const CComPtr<IBMDSwitcherAudioMixer>& audioMixer, std::vector<CComPtr<IBMDSwitcherInput>>& switcherInputs) {
 	BMDSwitcherInputId							mediaPlayerTargetId = 0;
 	CComPtr<IBMDSwitcherAudioInputIterator>		audioInputIterator;
 	CComPtr<IBMDSwitcherAudioInput>				audioInput;
@@ -363,8 +324,7 @@ void print_audio_inputs(const CComPtr<IBMDSwitcherAudioMixer>& audioMixer, std::
 	if (audioMixer->CreateIterator(IID_IBMDSwitcherAudioInputIterator, (void**)&audioInputIterator) != S_OK)
 		return;
 
-	while (audioInputIterator->Next(&audioInput) == S_OK)
-	{
+	while (audioInputIterator->Next(&audioInput) == S_OK) {
 		BMDSwitcherAudioInputType inputType;
 		BMDSwitcherAudioInputId inputId;
 		BMDSwitcherExternalPortType externalPortType;
@@ -387,29 +347,23 @@ void print_audio_inputs(const CComPtr<IBMDSwitcherAudioMixer>& audioMixer, std::
 			inputId,
 			inputTypeStr.c_str(),
 			externalPortTypeStr.c_str());
-		if (inputType == bmdSwitcherAudioInputTypeEmbeddedWithVideo)
-		{
+		if (inputType == bmdSwitcherAudioInputTypeEmbeddedWithVideo) {
 			// Display the short name of the corresponding switcher input
 			CComQIPtr<IBMDSwitcherInput> switcherInput = audioInput;
-			if (switcherInput)
-			{
+			if (switcherInput) {
 				BSTR inputShortName[5];
 				if (switcherInput->GetShortName(inputShortName) == S_OK)
 					printf(" - %s", BSTRToCString(*inputShortName));
 			}
-		}
-		else if (inputType == bmdSwitcherAudioInputTypeMediaPlayer)
-		{
+		} else if (inputType == bmdSwitcherAudioInputTypeMediaPlayer) {
 			// Cycle through switcher inputs and match port type with Media Player Fill
-			for (auto& switcherInput : switcherInputs)
-			{
+			for (auto& switcherInput : switcherInputs) {
 				BMDSwitcherPortType portType;
 				BMDSwitcherInputId inputId;
 				if ((switcherInput->GetPortType(&portType) == S_OK) &&
 					(portType == bmdSwitcherPortTypeMediaPlayerFill) &&
 					(switcherInput->GetInputId(&inputId) == S_OK) &&
-					(inputId >= mediaPlayerTargetId))
-				{
+					(inputId >= mediaPlayerTargetId)) {
 					BSTR inputShortName[5];
 					if (switcherInput->GetShortName(inputShortName) == S_OK)
 						printf(" - %s", BSTRToCString(*inputShortName));
@@ -425,8 +379,7 @@ void print_audio_inputs(const CComPtr<IBMDSwitcherAudioMixer>& audioMixer, std::
 	}
 }
 
-void print_media_pool_stills(const CComPtr<IBMDSwitcherStills>& stills)
-{
+void print_media_pool_stills(const CComPtr<IBMDSwitcherStills>& stills) {
 	unsigned int stillsCount;
 	printf("\nMedia Pool Stills:\n");
 	printf(" %-7s%s\n", "ID", "Name");
@@ -434,11 +387,9 @@ void print_media_pool_stills(const CComPtr<IBMDSwitcherStills>& stills)
 	if (stills->GetCount(&stillsCount) != S_OK)
 		return;
 
-	for (unsigned int i = 0; i < stillsCount; i++)
-	{
+	for (unsigned int i = 0; i < stillsCount; i++) {
 		BOOL isValid;
-		if ((stills->IsValid(i, &isValid) == S_OK) && isValid)
-		{
+		if ((stills->IsValid(i, &isValid) == S_OK) && isValid) {
 			CComBSTR stillName;
 			if (stills->GetName(i, &stillName) == S_OK)
 				printf(" %-7d%s\n", i, BSTRToCString(stillName));
@@ -447,8 +398,7 @@ void print_media_pool_stills(const CComPtr<IBMDSwitcherStills>& stills)
 	printf("\n");
 }
 
-void print_media_pool_clips(const CComPtr<IBMDSwitcherMediaPool>& mediaPool)
-{
+void print_media_pool_clips(const CComPtr<IBMDSwitcherMediaPool>& mediaPool) {
 	unsigned int clipCount;
 	printf("\nMedia Pool Clips:\n");
 	printf(" %-7s%-40s%s\n", "ID", "Name", "Frame Count");
@@ -456,14 +406,11 @@ void print_media_pool_clips(const CComPtr<IBMDSwitcherMediaPool>& mediaPool)
 	if (mediaPool->GetClipCount(&clipCount) != S_OK)
 		return;
 
-	for (unsigned int i = 0; i < clipCount; i++)
-	{
+	for (unsigned int i = 0; i < clipCount; i++) {
 		CComPtr<IBMDSwitcherClip> clip;
-		if (mediaPool->GetClip(i, &clip) == S_OK)
-		{
+		if (mediaPool->GetClip(i, &clip) == S_OK) {
 			BOOL isValid;
-			if ((clip->IsValid(&isValid) == S_OK) && isValid)
-			{
+			if ((clip->IsValid(&isValid) == S_OK) && isValid) {
 				CComBSTR		clipName;
 				unsigned int	clipIndex;
 				unsigned int	clipFrameCount;

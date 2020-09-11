@@ -3,7 +3,7 @@
 std::string convertToString(const BSTR& bstr) {
 	CString cstr(bstr);
 	CT2CA pszConvertedAnsiString(cstr);
-	
+
 	return std::string(pszConvertedAnsiString);
 }
 
@@ -62,11 +62,11 @@ namespace ofxAtem {
 
 		readInputMap();
 		readActiveIds();
-		
+
 		ofAddListener(MixEffectBlockMonitor::effectBlockChanged, this, &Device::onMixEffectBlockUpdated);
 
 		return true;
-		
+
 	}
 
 	void Device::printInfo() {
@@ -196,7 +196,7 @@ namespace ofxAtem {
 	void Device::onMixEffectBlockUpdated(BMDSwitcherMixEffectBlockEventType& e) {
 		if (e == bmdSwitcherMixEffectBlockEventTypeProgramInputChanged ||
 			e == bmdSwitcherMixEffectBlockEventTypePreviewInputChanged) {
-			
+
 			readActiveIds();
 		}
 	}
@@ -207,7 +207,7 @@ namespace ofxAtem {
 
 		BMDSwitcherInputId bmdProgramId;
 		resultProgram = switcherMixEffectBlocks[0]->GetProgramInput(&bmdProgramId);
-		
+
 		for (int i = 0; i < inputMap.size(); i++) {
 			if (inputMap[i]->bmdId == bmdProgramId) {
 				currentProgram = inputMap[i];
@@ -217,7 +217,7 @@ namespace ofxAtem {
 
 		BMDSwitcherInputId bmdPreviewId;
 		resultPreview = switcherMixEffectBlocks[0]->GetPreviewInput(&bmdPreviewId);
-		
+
 		for (int i = 0; i < inputMap.size(); i++) {
 			if (inputMap[i]->bmdId == bmdPreviewId) {
 				currentPreview = inputMap[i];
@@ -259,7 +259,7 @@ namespace ofxAtem {
 				input->GetCurrentExternalPortType(&externalPortType);
 				portTypeStr += " (" + LookupString<BMDSwitcherExternalPortType>(kSwitcherExternalPortTypes, externalPortType) + ")";
 			}
-			
+
 
 			ofPtr<Input> inputPtr = std::make_shared<Input>();
 			inputPtr->bmdId = id;
@@ -271,7 +271,7 @@ namespace ofxAtem {
 			inputMap.push_back(std::move(inputPtr));
 
 			input->Release();
-		
+
 			index++;
 		}
 
@@ -280,7 +280,7 @@ namespace ofxAtem {
 		return true;
 	}
 
-	
+
 
 
 }
