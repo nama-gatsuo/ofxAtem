@@ -6,7 +6,7 @@
  /* File created by MIDL compiler version 8.01.0622 */
 /* at Tue Jan 19 12:14:07 2038
  */
-/* Compiler settings for ..\Blackmagic ATEM Switchers SDK 8.4\Windows\include\BMDSwitcherAPI.idl:
+/* Compiler settings for ..\libs\Blackmagic ATEM Switchers SDK 8.6.1\Windows\include\BMDSwitcherAPI.idl:
     Oicf, W1, Zp8, env=Win64 (32b run), target_arch=AMD64 8.01.0622 
     protocol : all , ms_ext, c_ext, robust
     error checks: allocation ref bounds_check enum stub_data 
@@ -290,6 +290,20 @@ typedef interface IBMDSwitcherFairlightAudioMixerCallback IBMDSwitcherFairlightA
 typedef interface IBMDSwitcherFairlightAudioMixer IBMDSwitcherFairlightAudioMixer;
 
 #endif 	/* __IBMDSwitcherFairlightAudioMixer_FWD_DEFINED__ */
+
+
+#ifndef __IBMDSwitcherFairlightAudioSoloCallback_FWD_DEFINED__
+#define __IBMDSwitcherFairlightAudioSoloCallback_FWD_DEFINED__
+typedef interface IBMDSwitcherFairlightAudioSoloCallback IBMDSwitcherFairlightAudioSoloCallback;
+
+#endif 	/* __IBMDSwitcherFairlightAudioSoloCallback_FWD_DEFINED__ */
+
+
+#ifndef __IBMDSwitcherFairlightAudioSolo_FWD_DEFINED__
+#define __IBMDSwitcherFairlightAudioSolo_FWD_DEFINED__
+typedef interface IBMDSwitcherFairlightAudioSolo IBMDSwitcherFairlightAudioSolo;
+
+#endif 	/* __IBMDSwitcherFairlightAudioSolo_FWD_DEFINED__ */
 
 
 #ifndef __IBMDSwitcherKeyLumaParametersCallback_FWD_DEFINED__
@@ -1592,6 +1606,48 @@ typedef interface IBMDSwitcherStreamRTMP_v8_3 IBMDSwitcherStreamRTMP_v8_3;
 #endif 	/* __IBMDSwitcherStreamRTMP_v8_3_FWD_DEFINED__ */
 
 
+#ifndef __IBMDSwitcherStreamRTMP_v8_4_FWD_DEFINED__
+#define __IBMDSwitcherStreamRTMP_v8_4_FWD_DEFINED__
+typedef interface IBMDSwitcherStreamRTMP_v8_4 IBMDSwitcherStreamRTMP_v8_4;
+
+#endif 	/* __IBMDSwitcherStreamRTMP_v8_4_FWD_DEFINED__ */
+
+
+#ifndef __IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3_FWD_DEFINED__
+#define __IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3_FWD_DEFINED__
+typedef interface IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3 IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3;
+
+#endif 	/* __IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3_FWD_DEFINED__ */
+
+
+#ifndef __IBMDSwitcherRecordAV_v8_5_3_FWD_DEFINED__
+#define __IBMDSwitcherRecordAV_v8_5_3_FWD_DEFINED__
+typedef interface IBMDSwitcherRecordAV_v8_5_3 IBMDSwitcherRecordAV_v8_5_3;
+
+#endif 	/* __IBMDSwitcherRecordAV_v8_5_3_FWD_DEFINED__ */
+
+
+#ifndef __IBMDSwitcherStreamRTMP_v8_5_3_FWD_DEFINED__
+#define __IBMDSwitcherStreamRTMP_v8_5_3_FWD_DEFINED__
+typedef interface IBMDSwitcherStreamRTMP_v8_5_3 IBMDSwitcherStreamRTMP_v8_5_3;
+
+#endif 	/* __IBMDSwitcherStreamRTMP_v8_5_3_FWD_DEFINED__ */
+
+
+#ifndef __IBMDSwitcherFairlightAudioHeadphoneOutputIterator_v8_5_3_FWD_DEFINED__
+#define __IBMDSwitcherFairlightAudioHeadphoneOutputIterator_v8_5_3_FWD_DEFINED__
+typedef interface IBMDSwitcherFairlightAudioHeadphoneOutputIterator_v8_5_3 IBMDSwitcherFairlightAudioHeadphoneOutputIterator_v8_5_3;
+
+#endif 	/* __IBMDSwitcherFairlightAudioHeadphoneOutputIterator_v8_5_3_FWD_DEFINED__ */
+
+
+#ifndef __IBMDSwitcherFairlightAnalogAudioInput_v8_5_3_FWD_DEFINED__
+#define __IBMDSwitcherFairlightAnalogAudioInput_v8_5_3_FWD_DEFINED__
+typedef interface IBMDSwitcherFairlightAnalogAudioInput_v8_5_3 IBMDSwitcherFairlightAnalogAudioInput_v8_5_3;
+
+#endif 	/* __IBMDSwitcherFairlightAnalogAudioInput_v8_5_3_FWD_DEFINED__ */
+
+
 /* header files for imported files */
 #include "unknwn.h"
 
@@ -1679,6 +1735,8 @@ enum _BMDSwitcherInputAvailability
         bmdSwitcherInputAvailabilityMixEffectBlock1	= 0x2,
         bmdSwitcherInputAvailabilityMixEffectBlock2	= 0x80,
         bmdSwitcherInputAvailabilityMixEffectBlock3	= 0x100,
+        bmdSwitcherInputAvailabilityAux1Output	= 0x1000,
+        bmdSwitcherInputAvailabilityAux2Output	= 0x2000,
         bmdSwitcherInputAvailabilityAuxOutputs	= 0x4,
         bmdSwitcherInputAvailabilityMultiView	= 0x8,
         bmdSwitcherInputAvailabilitySuperSourceArt	= 0x10,
@@ -2029,6 +2087,13 @@ enum _BMDSwitcherFairlightAudioSourceEventType
     } 	BMDSwitcherFairlightAudioSourceEventType;
 
 typedef /* [v1_enum] */ 
+enum _BMDSwitcherFairlightAudioSoloEventType
+    {
+        bmdSwitcherFairlightAudioSoloEventTypeSoloChanged	= 0x66617343,
+        bmdSwitcherFairlightAudioSoloEventTypeSoloInputChanged	= 0x66736943
+    } 	BMDSwitcherFairlightAudioSoloEventType;
+
+typedef /* [v1_enum] */ 
 enum _BMDSwitcherFairlightAudioSourceType
     {
         bmdSwitcherFairlightAudioSourceTypeMono	= 0x6d6f6e6f,
@@ -2053,7 +2118,8 @@ enum _BMDSwitcherFairlightAudioInputEventType
 typedef /* [v1_enum] */ 
 enum _BMDSwitcherFairlightAnalogAudioInputEventType
     {
-        bmdSwitcherFairlightAnalogAudioInputEventTypeLevelChanged	= 0x61616c43
+        bmdSwitcherFairlightAnalogAudioInputEventTypeLevelChanged	= 0x61616c43,
+        bmdSwitcherFairlightAnalogAudioInputEventTypePowerModeChanged	= 0x61616d43
     } 	BMDSwitcherFairlightAnalogAudioInputEventType;
 
 typedef /* [v1_enum] */ 
@@ -2063,6 +2129,13 @@ enum _BMDSwitcherFairlightAudioAnalogInputLevel
         bmdSwitcherFairlightAudioAnalogInputLevelConsumerLine	= 0x2,
         bmdSwitcherFairlightAudioAnalogInputLevelProLine	= 0x4
     } 	BMDSwitcherFairlightAudioAnalogInputLevel;
+
+typedef /* [v1_enum] */ 
+enum _BMDSwitcherFairlightAudioAnalogInputMicPowerMode
+    {
+        bmdSwitcherFairlightAudioAnalogInputMicPowerModeNoPower	= 0x1,
+        bmdSwitcherFairlightAudioAnalogInputMicPowerModePlugInPower	= 0x2
+    } 	BMDSwitcherFairlightAudioAnalogInputMicPowerMode;
 
 typedef /* [v1_enum] */ 
 enum _BMDSwitcherFairlightAudioInputType
@@ -2087,7 +2160,9 @@ enum _BMDSwitcherFairlightAudioHeadphoneOutputEventType
         bmdSwitcherFairlightAudioHeadphoneOutputEventTypeGainChanged	= 0x686f6743,
         bmdSwitcherFairlightAudioHeadphoneOutputEventTypeInputMasterOutGainChanged	= 0x686f6d43,
         bmdSwitcherFairlightAudioHeadphoneOutputEventTypeInputTalkbackGainChanged	= 0x686f7443,
-        bmdSwitcherFairlightAudioHeadphoneOutputEventTypeInputSidetoneGainChanged	= 0x686f7343
+        bmdSwitcherFairlightAudioHeadphoneOutputEventTypeInputSidetoneGainChanged	= 0x686f7343,
+        bmdSwitcherFairlightAudioHeadphoneOutputEventTypeInputMasterOutMuteChanged	= 0x686d6f43,
+        bmdSwitcherFairlightAudioHeadphoneOutputEventTypeInputTalkbackMuteChanged	= 0x68746f43
     } 	BMDSwitcherFairlightAudioHeadphoneOutputEventType;
 
 typedef /* [v1_enum] */ 
@@ -2529,7 +2604,8 @@ enum _BMDSwitcherRecordAVEventType
     {
         bmdSwitcherRecordAVEventTypeFilenameChanged	= 0x726d6663,
         bmdSwitcherRecordAVEventTypeRecordInAllCamerasChanged	= 0x72616363,
-        bmdSwitcherRecordAVEventTypeDurationChanged	= 0x726d6463,
+        bmdSwitcherRecordAVEventTypeTimecodeChanged	= 0x726d6463,
+        bmdSwitcherRecordAVEventTypeDurationChanged	= 0x72647563,
         bmdSwitcherRecordAVEventTypeActiveDiskIndexChanged	= 0x726d6163,
         bmdSwitcherRecordAVEventTypeTotalRecordingTimeAvailableChanged	= 0x726d7463,
         bmdSwitcherRecordAVEventTypeRecordAllISOInputsChanged	= 0x69737261
@@ -2572,8 +2648,10 @@ enum _BMDSwitcherStreamRTMPEventType
         bmdSwitcherStreamRTMPEventTypeAudioBitratesChanged	= 0x72616263,
         bmdSwitcherStreamRTMPEventTypeEncodingBitrateChanged	= 0x72736563,
         bmdSwitcherStreamRTMPEventTypeCacheUsedChanged	= 0x72736363,
-        bmdSwitcherStreamRTMPEventTypeDurationChanged	= 0x72736463,
-        bmdSwitcherStreamRTMPEventTypeAuthenticationChanged	= 0x72736163
+        bmdSwitcherStreamRTMPEventTypeTimecodeChanged	= 0x72736463,
+        bmdSwitcherStreamRTMPEventTypeDurationChanged	= 0x72736475,
+        bmdSwitcherStreamRTMPEventTypeAuthenticationChanged	= 0x72736163,
+        bmdSwitcherStreamRTMPEventTypeLowLatencyChanged	= 0x6c6c7463
     } 	BMDSwitcherStreamRTMPEventType;
 
 typedef /* [v1_enum] */ 
@@ -2901,6 +2979,8 @@ enum _BMDSwitcherTimeCodeMode
 
 
 
+
+
 typedef /* [v1_enum] */ 
 enum _BMDSwitcherPropertyId_v4_0
     {
@@ -3060,6 +3140,11 @@ enum _BMDSwitcherFairlightAudioInputXLREventType_v8_1
     {
         bmdSwitcherFairlightAudioInputXLREventTypeRCAToXLREnabledChanged_v8_1	= 0x72747843
     } 	BMDSwitcherFairlightAudioInputXLREventType_v8_1;
+
+
+
+
+
 
 
 
@@ -6932,7 +7017,7 @@ EXTERN_C const IID IID_IBMDSwitcherFairlightAnalogAudioInput;
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
     
-    MIDL_INTERFACE("C3F347F3-49BB-4832-835C-E329FBF5707E")
+    MIDL_INTERFACE("7103C039-96F5-46C0-B2AF-A7FFFFFBB4F2")
     IBMDSwitcherFairlightAnalogAudioInput : public IUnknown
     {
     public:
@@ -6944,6 +7029,15 @@ EXTERN_C const IID IID_IBMDSwitcherFairlightAnalogAudioInput;
         
         virtual HRESULT STDMETHODCALLTYPE SetInputLevel( 
             /* [in] */ BMDSwitcherFairlightAudioAnalogInputLevel level) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetSupportedMicPowerModes( 
+            /* [out] */ BMDSwitcherFairlightAudioAnalogInputMicPowerMode *powerModes) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetMicPowerMode( 
+            /* [out] */ BMDSwitcherFairlightAudioAnalogInputMicPowerMode *powerMode) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetMicPowerMode( 
+            /* [in] */ BMDSwitcherFairlightAudioAnalogInputMicPowerMode powerMode) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE AddCallback( 
             /* [in] */ IBMDSwitcherFairlightAnalogAudioInputCallback *callback) = 0;
@@ -6984,6 +7078,18 @@ EXTERN_C const IID IID_IBMDSwitcherFairlightAnalogAudioInput;
             IBMDSwitcherFairlightAnalogAudioInput * This,
             /* [in] */ BMDSwitcherFairlightAudioAnalogInputLevel level);
         
+        HRESULT ( STDMETHODCALLTYPE *GetSupportedMicPowerModes )( 
+            IBMDSwitcherFairlightAnalogAudioInput * This,
+            /* [out] */ BMDSwitcherFairlightAudioAnalogInputMicPowerMode *powerModes);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetMicPowerMode )( 
+            IBMDSwitcherFairlightAnalogAudioInput * This,
+            /* [out] */ BMDSwitcherFairlightAudioAnalogInputMicPowerMode *powerMode);
+        
+        HRESULT ( STDMETHODCALLTYPE *SetMicPowerMode )( 
+            IBMDSwitcherFairlightAnalogAudioInput * This,
+            /* [in] */ BMDSwitcherFairlightAudioAnalogInputMicPowerMode powerMode);
+        
         HRESULT ( STDMETHODCALLTYPE *AddCallback )( 
             IBMDSwitcherFairlightAnalogAudioInput * This,
             /* [in] */ IBMDSwitcherFairlightAnalogAudioInputCallback *callback);
@@ -7023,6 +7129,15 @@ EXTERN_C const IID IID_IBMDSwitcherFairlightAnalogAudioInput;
 
 #define IBMDSwitcherFairlightAnalogAudioInput_SetInputLevel(This,level)	\
     ( (This)->lpVtbl -> SetInputLevel(This,level) ) 
+
+#define IBMDSwitcherFairlightAnalogAudioInput_GetSupportedMicPowerModes(This,powerModes)	\
+    ( (This)->lpVtbl -> GetSupportedMicPowerModes(This,powerModes) ) 
+
+#define IBMDSwitcherFairlightAnalogAudioInput_GetMicPowerMode(This,powerMode)	\
+    ( (This)->lpVtbl -> GetMicPowerMode(This,powerMode) ) 
+
+#define IBMDSwitcherFairlightAnalogAudioInput_SetMicPowerMode(This,powerMode)	\
+    ( (This)->lpVtbl -> SetMicPowerMode(This,powerMode) ) 
 
 #define IBMDSwitcherFairlightAnalogAudioInput_AddCallback(This,callback)	\
     ( (This)->lpVtbl -> AddCallback(This,callback) ) 
@@ -7466,10 +7581,16 @@ EXTERN_C const IID IID_IBMDSwitcherFairlightAudioHeadphoneOutput;
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
     
-    MIDL_INTERFACE("A9E5FB7D-A436-4179-9F3F-FF2BD5580830")
+    MIDL_INTERFACE("8111B131-A6AF-4B1D-AE26-F60E085B52D4")
     IBMDSwitcherFairlightAudioHeadphoneOutput : public IUnknown
     {
     public:
+        virtual HRESULT STDMETHODCALLTYPE DoesSupportSolo( 
+            /* [out] */ BOOL *supportsSolo) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE DoesSupportMute( 
+            /* [out] */ BOOL *supportsMute) = 0;
+        
         virtual HRESULT STDMETHODCALLTYPE GetGain( 
             /* [out] */ double *decibel) = 0;
         
@@ -7482,11 +7603,29 @@ EXTERN_C const IID IID_IBMDSwitcherFairlightAudioHeadphoneOutput;
         virtual HRESULT STDMETHODCALLTYPE SetInputMasterOutGain( 
             /* [in] */ double decibel) = 0;
         
+        virtual HRESULT STDMETHODCALLTYPE GetInputMasterOutMute( 
+            /* [out] */ BOOL *muteMaster) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetInputMasterOutMute( 
+            /* [in] */ BOOL muteMaster) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE DoesSupportTalkback( 
+            /* [out] */ BOOL *supportsTalkback) = 0;
+        
         virtual HRESULT STDMETHODCALLTYPE GetInputTalkbackGain( 
             /* [out] */ double *decibel) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE SetInputTalkbackGain( 
             /* [in] */ double decibel) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetInputTalkbackMute( 
+            /* [out] */ BOOL *muteTalkback) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetInputTalkbackMute( 
+            /* [in] */ BOOL muteTalkback) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE DoesSupportSidetone( 
+            /* [out] */ BOOL *supportsSidetone) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE GetInputSidetoneGain( 
             /* [out] */ double *decibel) = 0;
@@ -7521,6 +7660,14 @@ EXTERN_C const IID IID_IBMDSwitcherFairlightAudioHeadphoneOutput;
         ULONG ( STDMETHODCALLTYPE *Release )( 
             IBMDSwitcherFairlightAudioHeadphoneOutput * This);
         
+        HRESULT ( STDMETHODCALLTYPE *DoesSupportSolo )( 
+            IBMDSwitcherFairlightAudioHeadphoneOutput * This,
+            /* [out] */ BOOL *supportsSolo);
+        
+        HRESULT ( STDMETHODCALLTYPE *DoesSupportMute )( 
+            IBMDSwitcherFairlightAudioHeadphoneOutput * This,
+            /* [out] */ BOOL *supportsMute);
+        
         HRESULT ( STDMETHODCALLTYPE *GetGain )( 
             IBMDSwitcherFairlightAudioHeadphoneOutput * This,
             /* [out] */ double *decibel);
@@ -7537,6 +7684,18 @@ EXTERN_C const IID IID_IBMDSwitcherFairlightAudioHeadphoneOutput;
             IBMDSwitcherFairlightAudioHeadphoneOutput * This,
             /* [in] */ double decibel);
         
+        HRESULT ( STDMETHODCALLTYPE *GetInputMasterOutMute )( 
+            IBMDSwitcherFairlightAudioHeadphoneOutput * This,
+            /* [out] */ BOOL *muteMaster);
+        
+        HRESULT ( STDMETHODCALLTYPE *SetInputMasterOutMute )( 
+            IBMDSwitcherFairlightAudioHeadphoneOutput * This,
+            /* [in] */ BOOL muteMaster);
+        
+        HRESULT ( STDMETHODCALLTYPE *DoesSupportTalkback )( 
+            IBMDSwitcherFairlightAudioHeadphoneOutput * This,
+            /* [out] */ BOOL *supportsTalkback);
+        
         HRESULT ( STDMETHODCALLTYPE *GetInputTalkbackGain )( 
             IBMDSwitcherFairlightAudioHeadphoneOutput * This,
             /* [out] */ double *decibel);
@@ -7544,6 +7703,18 @@ EXTERN_C const IID IID_IBMDSwitcherFairlightAudioHeadphoneOutput;
         HRESULT ( STDMETHODCALLTYPE *SetInputTalkbackGain )( 
             IBMDSwitcherFairlightAudioHeadphoneOutput * This,
             /* [in] */ double decibel);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetInputTalkbackMute )( 
+            IBMDSwitcherFairlightAudioHeadphoneOutput * This,
+            /* [out] */ BOOL *muteTalkback);
+        
+        HRESULT ( STDMETHODCALLTYPE *SetInputTalkbackMute )( 
+            IBMDSwitcherFairlightAudioHeadphoneOutput * This,
+            /* [in] */ BOOL muteTalkback);
+        
+        HRESULT ( STDMETHODCALLTYPE *DoesSupportSidetone )( 
+            IBMDSwitcherFairlightAudioHeadphoneOutput * This,
+            /* [out] */ BOOL *supportsSidetone);
         
         HRESULT ( STDMETHODCALLTYPE *GetInputSidetoneGain )( 
             IBMDSwitcherFairlightAudioHeadphoneOutput * This,
@@ -7584,6 +7755,12 @@ EXTERN_C const IID IID_IBMDSwitcherFairlightAudioHeadphoneOutput;
     ( (This)->lpVtbl -> Release(This) ) 
 
 
+#define IBMDSwitcherFairlightAudioHeadphoneOutput_DoesSupportSolo(This,supportsSolo)	\
+    ( (This)->lpVtbl -> DoesSupportSolo(This,supportsSolo) ) 
+
+#define IBMDSwitcherFairlightAudioHeadphoneOutput_DoesSupportMute(This,supportsMute)	\
+    ( (This)->lpVtbl -> DoesSupportMute(This,supportsMute) ) 
+
 #define IBMDSwitcherFairlightAudioHeadphoneOutput_GetGain(This,decibel)	\
     ( (This)->lpVtbl -> GetGain(This,decibel) ) 
 
@@ -7596,11 +7773,29 @@ EXTERN_C const IID IID_IBMDSwitcherFairlightAudioHeadphoneOutput;
 #define IBMDSwitcherFairlightAudioHeadphoneOutput_SetInputMasterOutGain(This,decibel)	\
     ( (This)->lpVtbl -> SetInputMasterOutGain(This,decibel) ) 
 
+#define IBMDSwitcherFairlightAudioHeadphoneOutput_GetInputMasterOutMute(This,muteMaster)	\
+    ( (This)->lpVtbl -> GetInputMasterOutMute(This,muteMaster) ) 
+
+#define IBMDSwitcherFairlightAudioHeadphoneOutput_SetInputMasterOutMute(This,muteMaster)	\
+    ( (This)->lpVtbl -> SetInputMasterOutMute(This,muteMaster) ) 
+
+#define IBMDSwitcherFairlightAudioHeadphoneOutput_DoesSupportTalkback(This,supportsTalkback)	\
+    ( (This)->lpVtbl -> DoesSupportTalkback(This,supportsTalkback) ) 
+
 #define IBMDSwitcherFairlightAudioHeadphoneOutput_GetInputTalkbackGain(This,decibel)	\
     ( (This)->lpVtbl -> GetInputTalkbackGain(This,decibel) ) 
 
 #define IBMDSwitcherFairlightAudioHeadphoneOutput_SetInputTalkbackGain(This,decibel)	\
     ( (This)->lpVtbl -> SetInputTalkbackGain(This,decibel) ) 
+
+#define IBMDSwitcherFairlightAudioHeadphoneOutput_GetInputTalkbackMute(This,muteTalkback)	\
+    ( (This)->lpVtbl -> GetInputTalkbackMute(This,muteTalkback) ) 
+
+#define IBMDSwitcherFairlightAudioHeadphoneOutput_SetInputTalkbackMute(This,muteTalkback)	\
+    ( (This)->lpVtbl -> SetInputTalkbackMute(This,muteTalkback) ) 
+
+#define IBMDSwitcherFairlightAudioHeadphoneOutput_DoesSupportSidetone(This,supportsSidetone)	\
+    ( (This)->lpVtbl -> DoesSupportSidetone(This,supportsSidetone) ) 
 
 #define IBMDSwitcherFairlightAudioHeadphoneOutput_GetInputSidetoneGain(This,decibel)	\
     ( (This)->lpVtbl -> GetInputSidetoneGain(This,decibel) ) 
@@ -7636,7 +7831,7 @@ EXTERN_C const IID IID_IBMDSwitcherFairlightAudioHeadphoneOutputIterator;
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
     
-    MIDL_INTERFACE("63EED6B1-D574-4312-90B4-F6DEBC290701")
+    MIDL_INTERFACE("3F65B11C-B00E-4D65-AD82-AC58E2EF1ED9")
     IBMDSwitcherFairlightAudioHeadphoneOutputIterator : public IUnknown
     {
     public:
@@ -7999,6 +8194,220 @@ EXTERN_C const IID IID_IBMDSwitcherFairlightAudioMixer;
 
 
 #endif 	/* __IBMDSwitcherFairlightAudioMixer_INTERFACE_DEFINED__ */
+
+
+#ifndef __IBMDSwitcherFairlightAudioSoloCallback_INTERFACE_DEFINED__
+#define __IBMDSwitcherFairlightAudioSoloCallback_INTERFACE_DEFINED__
+
+/* interface IBMDSwitcherFairlightAudioSoloCallback */
+/* [helpstring][uuid][object] */ 
+
+
+EXTERN_C const IID IID_IBMDSwitcherFairlightAudioSoloCallback;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("EFA5F39D-667D-43C3-BC6A-B3F208FA1B16")
+    IBMDSwitcherFairlightAudioSoloCallback : public IUnknown
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE Notify( 
+            /* [in] */ BMDSwitcherFairlightAudioSoloEventType eventType) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct IBMDSwitcherFairlightAudioSoloCallbackVtbl
+    {
+        BEGIN_INTERFACE
+        
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            IBMDSwitcherFairlightAudioSoloCallback * This,
+            /* [in] */ REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            IBMDSwitcherFairlightAudioSoloCallback * This);
+        
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            IBMDSwitcherFairlightAudioSoloCallback * This);
+        
+        HRESULT ( STDMETHODCALLTYPE *Notify )( 
+            IBMDSwitcherFairlightAudioSoloCallback * This,
+            /* [in] */ BMDSwitcherFairlightAudioSoloEventType eventType);
+        
+        END_INTERFACE
+    } IBMDSwitcherFairlightAudioSoloCallbackVtbl;
+
+    interface IBMDSwitcherFairlightAudioSoloCallback
+    {
+        CONST_VTBL struct IBMDSwitcherFairlightAudioSoloCallbackVtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define IBMDSwitcherFairlightAudioSoloCallback_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define IBMDSwitcherFairlightAudioSoloCallback_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define IBMDSwitcherFairlightAudioSoloCallback_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define IBMDSwitcherFairlightAudioSoloCallback_Notify(This,eventType)	\
+    ( (This)->lpVtbl -> Notify(This,eventType) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __IBMDSwitcherFairlightAudioSoloCallback_INTERFACE_DEFINED__ */
+
+
+#ifndef __IBMDSwitcherFairlightAudioSolo_INTERFACE_DEFINED__
+#define __IBMDSwitcherFairlightAudioSolo_INTERFACE_DEFINED__
+
+/* interface IBMDSwitcherFairlightAudioSolo */
+/* [helpstring][uuid][object] */ 
+
+
+EXTERN_C const IID IID_IBMDSwitcherFairlightAudioSolo;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("4B32277E-3ADA-431E-9530-3A0BCF5CDB4F")
+    IBMDSwitcherFairlightAudioSolo : public IUnknown
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE GetSolo( 
+            /* [out] */ BOOL *solo) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetSolo( 
+            /* [in] */ BOOL solo) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetSoloInput( 
+            /* [out] */ BMDSwitcherAudioInputId *audioInput,
+            /* [out] */ BMDSwitcherFairlightAudioSourceId *audioSource) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetSoloInput( 
+            /* [in] */ BMDSwitcherAudioInputId audioInput,
+            /* [in] */ BMDSwitcherFairlightAudioSourceId audioSource) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE AddCallback( 
+            /* [in] */ IBMDSwitcherFairlightAudioSoloCallback *callback) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE RemoveCallback( 
+            /* [in] */ IBMDSwitcherFairlightAudioSoloCallback *callback) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct IBMDSwitcherFairlightAudioSoloVtbl
+    {
+        BEGIN_INTERFACE
+        
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            IBMDSwitcherFairlightAudioSolo * This,
+            /* [in] */ REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            IBMDSwitcherFairlightAudioSolo * This);
+        
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            IBMDSwitcherFairlightAudioSolo * This);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetSolo )( 
+            IBMDSwitcherFairlightAudioSolo * This,
+            /* [out] */ BOOL *solo);
+        
+        HRESULT ( STDMETHODCALLTYPE *SetSolo )( 
+            IBMDSwitcherFairlightAudioSolo * This,
+            /* [in] */ BOOL solo);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetSoloInput )( 
+            IBMDSwitcherFairlightAudioSolo * This,
+            /* [out] */ BMDSwitcherAudioInputId *audioInput,
+            /* [out] */ BMDSwitcherFairlightAudioSourceId *audioSource);
+        
+        HRESULT ( STDMETHODCALLTYPE *SetSoloInput )( 
+            IBMDSwitcherFairlightAudioSolo * This,
+            /* [in] */ BMDSwitcherAudioInputId audioInput,
+            /* [in] */ BMDSwitcherFairlightAudioSourceId audioSource);
+        
+        HRESULT ( STDMETHODCALLTYPE *AddCallback )( 
+            IBMDSwitcherFairlightAudioSolo * This,
+            /* [in] */ IBMDSwitcherFairlightAudioSoloCallback *callback);
+        
+        HRESULT ( STDMETHODCALLTYPE *RemoveCallback )( 
+            IBMDSwitcherFairlightAudioSolo * This,
+            /* [in] */ IBMDSwitcherFairlightAudioSoloCallback *callback);
+        
+        END_INTERFACE
+    } IBMDSwitcherFairlightAudioSoloVtbl;
+
+    interface IBMDSwitcherFairlightAudioSolo
+    {
+        CONST_VTBL struct IBMDSwitcherFairlightAudioSoloVtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define IBMDSwitcherFairlightAudioSolo_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define IBMDSwitcherFairlightAudioSolo_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define IBMDSwitcherFairlightAudioSolo_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define IBMDSwitcherFairlightAudioSolo_GetSolo(This,solo)	\
+    ( (This)->lpVtbl -> GetSolo(This,solo) ) 
+
+#define IBMDSwitcherFairlightAudioSolo_SetSolo(This,solo)	\
+    ( (This)->lpVtbl -> SetSolo(This,solo) ) 
+
+#define IBMDSwitcherFairlightAudioSolo_GetSoloInput(This,audioInput,audioSource)	\
+    ( (This)->lpVtbl -> GetSoloInput(This,audioInput,audioSource) ) 
+
+#define IBMDSwitcherFairlightAudioSolo_SetSoloInput(This,audioInput,audioSource)	\
+    ( (This)->lpVtbl -> SetSoloInput(This,audioInput,audioSource) ) 
+
+#define IBMDSwitcherFairlightAudioSolo_AddCallback(This,callback)	\
+    ( (This)->lpVtbl -> AddCallback(This,callback) ) 
+
+#define IBMDSwitcherFairlightAudioSolo_RemoveCallback(This,callback)	\
+    ( (This)->lpVtbl -> RemoveCallback(This,callback) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __IBMDSwitcherFairlightAudioSolo_INTERFACE_DEFINED__ */
 
 
 #ifndef __IBMDSwitcherKeyLumaParametersCallback_INTERFACE_DEFINED__
@@ -20436,7 +20845,7 @@ EXTERN_C const IID IID_IBMDSwitcherRecordAV;
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
     
-    MIDL_INTERFACE("43C5A333-3DF4-4DF2-8F81-0A994CE63315")
+    MIDL_INTERFACE("916580BA-8655-4195-8138-EA038981A1FE")
     IBMDSwitcherRecordAV : public IUnknown
     {
     public:
@@ -20491,6 +20900,9 @@ EXTERN_C const IID IID_IBMDSwitcherRecordAV;
         virtual HRESULT STDMETHODCALLTYPE RequestDuration( void) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE GetDuration( 
+            /* [out] */ unsigned long long *duration) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetTimecode( 
             /* [out] */ unsigned char *hours,
             /* [out] */ unsigned char *minutes,
             /* [out] */ unsigned char *seconds,
@@ -20600,6 +21012,10 @@ EXTERN_C const IID IID_IBMDSwitcherRecordAV;
         
         HRESULT ( STDMETHODCALLTYPE *GetDuration )( 
             IBMDSwitcherRecordAV * This,
+            /* [out] */ unsigned long long *duration);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetTimecode )( 
+            IBMDSwitcherRecordAV * This,
             /* [out] */ unsigned char *hours,
             /* [out] */ unsigned char *minutes,
             /* [out] */ unsigned char *seconds,
@@ -20697,8 +21113,11 @@ EXTERN_C const IID IID_IBMDSwitcherRecordAV;
 #define IBMDSwitcherRecordAV_RequestDuration(This)	\
     ( (This)->lpVtbl -> RequestDuration(This) ) 
 
-#define IBMDSwitcherRecordAV_GetDuration(This,hours,minutes,seconds,frames,dropFrame)	\
-    ( (This)->lpVtbl -> GetDuration(This,hours,minutes,seconds,frames,dropFrame) ) 
+#define IBMDSwitcherRecordAV_GetDuration(This,duration)	\
+    ( (This)->lpVtbl -> GetDuration(This,duration) ) 
+
+#define IBMDSwitcherRecordAV_GetTimecode(This,hours,minutes,seconds,frames,dropFrame)	\
+    ( (This)->lpVtbl -> GetTimecode(This,hours,minutes,seconds,frames,dropFrame) ) 
 
 #define IBMDSwitcherRecordAV_GetTotalRecordingTimeAvailable(This,totalRecordingTimeAvailable)	\
     ( (This)->lpVtbl -> GetTotalRecordingTimeAvailable(This,totalRecordingTimeAvailable) ) 
@@ -20850,7 +21269,7 @@ EXTERN_C const IID IID_IBMDSwitcherStreamRTMP;
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
     
-    MIDL_INTERFACE("5C7FF47D-AEDF-439F-BBC7-AF6F321BF079")
+    MIDL_INTERFACE("30CC3D23-DE0A-48CE-B46F-854D0C630549")
     IBMDSwitcherStreamRTMP : public IUnknown
     {
     public:
@@ -20902,6 +21321,9 @@ EXTERN_C const IID IID_IBMDSwitcherStreamRTMP;
         virtual HRESULT STDMETHODCALLTYPE RequestDuration( void) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE GetDuration( 
+            /* [out] */ unsigned long long *duration) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetTimecode( 
             /* [out] */ unsigned char *hours,
             /* [out] */ unsigned char *minutes,
             /* [out] */ unsigned char *seconds,
@@ -20921,6 +21343,12 @@ EXTERN_C const IID IID_IBMDSwitcherStreamRTMP;
         virtual HRESULT STDMETHODCALLTYPE GetAuthentication( 
             /* [out] */ BSTR *username,
             /* [out] */ BSTR *password) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetLowLatency( 
+            /* [in] */ BOOL lowLatency) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetLowLatency( 
+            /* [out] */ BOOL *lowLatency) = 0;
         
         virtual HRESULT STDMETHODCALLTYPE AddCallback( 
             /* [in] */ IBMDSwitcherStreamRTMPCallback *callback) = 0;
@@ -21013,6 +21441,10 @@ EXTERN_C const IID IID_IBMDSwitcherStreamRTMP;
         
         HRESULT ( STDMETHODCALLTYPE *GetDuration )( 
             IBMDSwitcherStreamRTMP * This,
+            /* [out] */ unsigned long long *duration);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetTimecode )( 
+            IBMDSwitcherStreamRTMP * This,
             /* [out] */ unsigned char *hours,
             /* [out] */ unsigned char *minutes,
             /* [out] */ unsigned char *seconds,
@@ -21036,6 +21468,14 @@ EXTERN_C const IID IID_IBMDSwitcherStreamRTMP;
             IBMDSwitcherStreamRTMP * This,
             /* [out] */ BSTR *username,
             /* [out] */ BSTR *password);
+        
+        HRESULT ( STDMETHODCALLTYPE *SetLowLatency )( 
+            IBMDSwitcherStreamRTMP * This,
+            /* [in] */ BOOL lowLatency);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetLowLatency )( 
+            IBMDSwitcherStreamRTMP * This,
+            /* [out] */ BOOL *lowLatency);
         
         HRESULT ( STDMETHODCALLTYPE *AddCallback )( 
             IBMDSwitcherStreamRTMP * This,
@@ -21113,8 +21553,11 @@ EXTERN_C const IID IID_IBMDSwitcherStreamRTMP;
 #define IBMDSwitcherStreamRTMP_RequestDuration(This)	\
     ( (This)->lpVtbl -> RequestDuration(This) ) 
 
-#define IBMDSwitcherStreamRTMP_GetDuration(This,hours,minutes,seconds,frames,dropFrame)	\
-    ( (This)->lpVtbl -> GetDuration(This,hours,minutes,seconds,frames,dropFrame) ) 
+#define IBMDSwitcherStreamRTMP_GetDuration(This,duration)	\
+    ( (This)->lpVtbl -> GetDuration(This,duration) ) 
+
+#define IBMDSwitcherStreamRTMP_GetTimecode(This,hours,minutes,seconds,frames,dropFrame)	\
+    ( (This)->lpVtbl -> GetTimecode(This,hours,minutes,seconds,frames,dropFrame) ) 
 
 #define IBMDSwitcherStreamRTMP_GetEncodingBitrate(This,encodingBitrate)	\
     ( (This)->lpVtbl -> GetEncodingBitrate(This,encodingBitrate) ) 
@@ -21127,6 +21570,12 @@ EXTERN_C const IID IID_IBMDSwitcherStreamRTMP;
 
 #define IBMDSwitcherStreamRTMP_GetAuthentication(This,username,password)	\
     ( (This)->lpVtbl -> GetAuthentication(This,username,password) ) 
+
+#define IBMDSwitcherStreamRTMP_SetLowLatency(This,lowLatency)	\
+    ( (This)->lpVtbl -> SetLowLatency(This,lowLatency) ) 
+
+#define IBMDSwitcherStreamRTMP_GetLowLatency(This,lowLatency)	\
+    ( (This)->lpVtbl -> GetLowLatency(This,lowLatency) ) 
 
 #define IBMDSwitcherStreamRTMP_AddCallback(This,callback)	\
     ( (This)->lpVtbl -> AddCallback(This,callback) ) 
@@ -38355,6 +38804,1306 @@ EXTERN_C const IID IID_IBMDSwitcherStreamRTMP_v8_3;
 
 
 #endif 	/* __IBMDSwitcherStreamRTMP_v8_3_INTERFACE_DEFINED__ */
+
+
+#ifndef __IBMDSwitcherStreamRTMP_v8_4_INTERFACE_DEFINED__
+#define __IBMDSwitcherStreamRTMP_v8_4_INTERFACE_DEFINED__
+
+/* interface IBMDSwitcherStreamRTMP_v8_4 */
+/* [helpstring][uuid][object] */ 
+
+
+EXTERN_C const IID IID_IBMDSwitcherStreamRTMP_v8_4;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("5C7FF47D-AEDF-439F-BBC7-AF6F321BF079")
+    IBMDSwitcherStreamRTMP_v8_4 : public IUnknown
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE StartStreaming( void) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE StopStreaming( void) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE IsStreaming( 
+            /* [out] */ BOOL *streaming) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetStatus( 
+            /* [out] */ BMDSwitcherStreamRTMPState *state,
+            /* [out] */ BMDSwitcherStreamRTMPError *error) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetServiceName( 
+            /* [in] */ BSTR serviceName) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetServiceName( 
+            /* [out] */ BSTR *serviceName) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetUrl( 
+            /* [in] */ BSTR url) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetUrl( 
+            /* [out] */ BSTR *url) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetKey( 
+            /* [in] */ BSTR url) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetKey( 
+            /* [out] */ BSTR *key) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetVideoBitrates( 
+            /* [in] */ unsigned int lowBitrate,
+            /* [in] */ unsigned int highBitrate) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetVideoBitrates( 
+            /* [out] */ unsigned int *lowBitRate,
+            /* [out] */ unsigned int *highBitRate) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetAudioBitrates( 
+            /* [in] */ unsigned int lowBitrate,
+            /* [in] */ unsigned int highBitrate) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetAudioBitrates( 
+            /* [out] */ unsigned int *lowBitRate,
+            /* [out] */ unsigned int *highBitRate) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE RequestDuration( void) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetDuration( 
+            /* [out] */ unsigned char *hours,
+            /* [out] */ unsigned char *minutes,
+            /* [out] */ unsigned char *seconds,
+            /* [out] */ unsigned char *frames,
+            /* [out] */ BOOL *dropFrame) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetEncodingBitrate( 
+            /* [out] */ unsigned int *encodingBitrate) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetCacheUsed( 
+            /* [out] */ double *cacheUsed) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetAuthentication( 
+            /* [in] */ BSTR username,
+            /* [in] */ BSTR password) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetAuthentication( 
+            /* [out] */ BSTR *username,
+            /* [out] */ BSTR *password) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE AddCallback( 
+            /* [in] */ IBMDSwitcherStreamRTMPCallback *callback) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE RemoveCallback( 
+            /* [in] */ IBMDSwitcherStreamRTMPCallback *callback) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct IBMDSwitcherStreamRTMP_v8_4Vtbl
+    {
+        BEGIN_INTERFACE
+        
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            IBMDSwitcherStreamRTMP_v8_4 * This,
+            /* [in] */ REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            IBMDSwitcherStreamRTMP_v8_4 * This);
+        
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            IBMDSwitcherStreamRTMP_v8_4 * This);
+        
+        HRESULT ( STDMETHODCALLTYPE *StartStreaming )( 
+            IBMDSwitcherStreamRTMP_v8_4 * This);
+        
+        HRESULT ( STDMETHODCALLTYPE *StopStreaming )( 
+            IBMDSwitcherStreamRTMP_v8_4 * This);
+        
+        HRESULT ( STDMETHODCALLTYPE *IsStreaming )( 
+            IBMDSwitcherStreamRTMP_v8_4 * This,
+            /* [out] */ BOOL *streaming);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetStatus )( 
+            IBMDSwitcherStreamRTMP_v8_4 * This,
+            /* [out] */ BMDSwitcherStreamRTMPState *state,
+            /* [out] */ BMDSwitcherStreamRTMPError *error);
+        
+        HRESULT ( STDMETHODCALLTYPE *SetServiceName )( 
+            IBMDSwitcherStreamRTMP_v8_4 * This,
+            /* [in] */ BSTR serviceName);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetServiceName )( 
+            IBMDSwitcherStreamRTMP_v8_4 * This,
+            /* [out] */ BSTR *serviceName);
+        
+        HRESULT ( STDMETHODCALLTYPE *SetUrl )( 
+            IBMDSwitcherStreamRTMP_v8_4 * This,
+            /* [in] */ BSTR url);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetUrl )( 
+            IBMDSwitcherStreamRTMP_v8_4 * This,
+            /* [out] */ BSTR *url);
+        
+        HRESULT ( STDMETHODCALLTYPE *SetKey )( 
+            IBMDSwitcherStreamRTMP_v8_4 * This,
+            /* [in] */ BSTR url);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetKey )( 
+            IBMDSwitcherStreamRTMP_v8_4 * This,
+            /* [out] */ BSTR *key);
+        
+        HRESULT ( STDMETHODCALLTYPE *SetVideoBitrates )( 
+            IBMDSwitcherStreamRTMP_v8_4 * This,
+            /* [in] */ unsigned int lowBitrate,
+            /* [in] */ unsigned int highBitrate);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetVideoBitrates )( 
+            IBMDSwitcherStreamRTMP_v8_4 * This,
+            /* [out] */ unsigned int *lowBitRate,
+            /* [out] */ unsigned int *highBitRate);
+        
+        HRESULT ( STDMETHODCALLTYPE *SetAudioBitrates )( 
+            IBMDSwitcherStreamRTMP_v8_4 * This,
+            /* [in] */ unsigned int lowBitrate,
+            /* [in] */ unsigned int highBitrate);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetAudioBitrates )( 
+            IBMDSwitcherStreamRTMP_v8_4 * This,
+            /* [out] */ unsigned int *lowBitRate,
+            /* [out] */ unsigned int *highBitRate);
+        
+        HRESULT ( STDMETHODCALLTYPE *RequestDuration )( 
+            IBMDSwitcherStreamRTMP_v8_4 * This);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetDuration )( 
+            IBMDSwitcherStreamRTMP_v8_4 * This,
+            /* [out] */ unsigned char *hours,
+            /* [out] */ unsigned char *minutes,
+            /* [out] */ unsigned char *seconds,
+            /* [out] */ unsigned char *frames,
+            /* [out] */ BOOL *dropFrame);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetEncodingBitrate )( 
+            IBMDSwitcherStreamRTMP_v8_4 * This,
+            /* [out] */ unsigned int *encodingBitrate);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetCacheUsed )( 
+            IBMDSwitcherStreamRTMP_v8_4 * This,
+            /* [out] */ double *cacheUsed);
+        
+        HRESULT ( STDMETHODCALLTYPE *SetAuthentication )( 
+            IBMDSwitcherStreamRTMP_v8_4 * This,
+            /* [in] */ BSTR username,
+            /* [in] */ BSTR password);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetAuthentication )( 
+            IBMDSwitcherStreamRTMP_v8_4 * This,
+            /* [out] */ BSTR *username,
+            /* [out] */ BSTR *password);
+        
+        HRESULT ( STDMETHODCALLTYPE *AddCallback )( 
+            IBMDSwitcherStreamRTMP_v8_4 * This,
+            /* [in] */ IBMDSwitcherStreamRTMPCallback *callback);
+        
+        HRESULT ( STDMETHODCALLTYPE *RemoveCallback )( 
+            IBMDSwitcherStreamRTMP_v8_4 * This,
+            /* [in] */ IBMDSwitcherStreamRTMPCallback *callback);
+        
+        END_INTERFACE
+    } IBMDSwitcherStreamRTMP_v8_4Vtbl;
+
+    interface IBMDSwitcherStreamRTMP_v8_4
+    {
+        CONST_VTBL struct IBMDSwitcherStreamRTMP_v8_4Vtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define IBMDSwitcherStreamRTMP_v8_4_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_4_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_4_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define IBMDSwitcherStreamRTMP_v8_4_StartStreaming(This)	\
+    ( (This)->lpVtbl -> StartStreaming(This) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_4_StopStreaming(This)	\
+    ( (This)->lpVtbl -> StopStreaming(This) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_4_IsStreaming(This,streaming)	\
+    ( (This)->lpVtbl -> IsStreaming(This,streaming) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_4_GetStatus(This,state,error)	\
+    ( (This)->lpVtbl -> GetStatus(This,state,error) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_4_SetServiceName(This,serviceName)	\
+    ( (This)->lpVtbl -> SetServiceName(This,serviceName) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_4_GetServiceName(This,serviceName)	\
+    ( (This)->lpVtbl -> GetServiceName(This,serviceName) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_4_SetUrl(This,url)	\
+    ( (This)->lpVtbl -> SetUrl(This,url) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_4_GetUrl(This,url)	\
+    ( (This)->lpVtbl -> GetUrl(This,url) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_4_SetKey(This,url)	\
+    ( (This)->lpVtbl -> SetKey(This,url) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_4_GetKey(This,key)	\
+    ( (This)->lpVtbl -> GetKey(This,key) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_4_SetVideoBitrates(This,lowBitrate,highBitrate)	\
+    ( (This)->lpVtbl -> SetVideoBitrates(This,lowBitrate,highBitrate) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_4_GetVideoBitrates(This,lowBitRate,highBitRate)	\
+    ( (This)->lpVtbl -> GetVideoBitrates(This,lowBitRate,highBitRate) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_4_SetAudioBitrates(This,lowBitrate,highBitrate)	\
+    ( (This)->lpVtbl -> SetAudioBitrates(This,lowBitrate,highBitrate) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_4_GetAudioBitrates(This,lowBitRate,highBitRate)	\
+    ( (This)->lpVtbl -> GetAudioBitrates(This,lowBitRate,highBitRate) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_4_RequestDuration(This)	\
+    ( (This)->lpVtbl -> RequestDuration(This) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_4_GetDuration(This,hours,minutes,seconds,frames,dropFrame)	\
+    ( (This)->lpVtbl -> GetDuration(This,hours,minutes,seconds,frames,dropFrame) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_4_GetEncodingBitrate(This,encodingBitrate)	\
+    ( (This)->lpVtbl -> GetEncodingBitrate(This,encodingBitrate) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_4_GetCacheUsed(This,cacheUsed)	\
+    ( (This)->lpVtbl -> GetCacheUsed(This,cacheUsed) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_4_SetAuthentication(This,username,password)	\
+    ( (This)->lpVtbl -> SetAuthentication(This,username,password) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_4_GetAuthentication(This,username,password)	\
+    ( (This)->lpVtbl -> GetAuthentication(This,username,password) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_4_AddCallback(This,callback)	\
+    ( (This)->lpVtbl -> AddCallback(This,callback) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_4_RemoveCallback(This,callback)	\
+    ( (This)->lpVtbl -> RemoveCallback(This,callback) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __IBMDSwitcherStreamRTMP_v8_4_INTERFACE_DEFINED__ */
+
+
+#ifndef __IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3_INTERFACE_DEFINED__
+#define __IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3_INTERFACE_DEFINED__
+
+/* interface IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3 */
+/* [helpstring][uuid][object] */ 
+
+
+EXTERN_C const IID IID_IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("A9E5FB7D-A436-4179-9F3F-FF2BD5580830")
+    IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3 : public IUnknown
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE GetGain( 
+            /* [out] */ double *decibel) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetGain( 
+            /* [in] */ double decibel) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetInputMasterOutGain( 
+            /* [out] */ double *decibel) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetInputMasterOutGain( 
+            /* [in] */ double decibel) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetInputTalkbackGain( 
+            /* [out] */ double *decibel) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetInputTalkbackGain( 
+            /* [in] */ double decibel) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetInputSidetoneGain( 
+            /* [out] */ double *decibel) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetInputSidetoneGain( 
+            /* [in] */ double decibel) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE AddCallback( 
+            /* [in] */ IBMDSwitcherFairlightAudioHeadphoneOutputCallback *callback) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE RemoveCallback( 
+            /* [in] */ IBMDSwitcherFairlightAudioHeadphoneOutputCallback *callback) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3Vtbl
+    {
+        BEGIN_INTERFACE
+        
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3 * This,
+            /* [in] */ REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3 * This);
+        
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3 * This);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetGain )( 
+            IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3 * This,
+            /* [out] */ double *decibel);
+        
+        HRESULT ( STDMETHODCALLTYPE *SetGain )( 
+            IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3 * This,
+            /* [in] */ double decibel);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetInputMasterOutGain )( 
+            IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3 * This,
+            /* [out] */ double *decibel);
+        
+        HRESULT ( STDMETHODCALLTYPE *SetInputMasterOutGain )( 
+            IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3 * This,
+            /* [in] */ double decibel);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetInputTalkbackGain )( 
+            IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3 * This,
+            /* [out] */ double *decibel);
+        
+        HRESULT ( STDMETHODCALLTYPE *SetInputTalkbackGain )( 
+            IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3 * This,
+            /* [in] */ double decibel);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetInputSidetoneGain )( 
+            IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3 * This,
+            /* [out] */ double *decibel);
+        
+        HRESULT ( STDMETHODCALLTYPE *SetInputSidetoneGain )( 
+            IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3 * This,
+            /* [in] */ double decibel);
+        
+        HRESULT ( STDMETHODCALLTYPE *AddCallback )( 
+            IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3 * This,
+            /* [in] */ IBMDSwitcherFairlightAudioHeadphoneOutputCallback *callback);
+        
+        HRESULT ( STDMETHODCALLTYPE *RemoveCallback )( 
+            IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3 * This,
+            /* [in] */ IBMDSwitcherFairlightAudioHeadphoneOutputCallback *callback);
+        
+        END_INTERFACE
+    } IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3Vtbl;
+
+    interface IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3
+    {
+        CONST_VTBL struct IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3Vtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3_GetGain(This,decibel)	\
+    ( (This)->lpVtbl -> GetGain(This,decibel) ) 
+
+#define IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3_SetGain(This,decibel)	\
+    ( (This)->lpVtbl -> SetGain(This,decibel) ) 
+
+#define IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3_GetInputMasterOutGain(This,decibel)	\
+    ( (This)->lpVtbl -> GetInputMasterOutGain(This,decibel) ) 
+
+#define IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3_SetInputMasterOutGain(This,decibel)	\
+    ( (This)->lpVtbl -> SetInputMasterOutGain(This,decibel) ) 
+
+#define IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3_GetInputTalkbackGain(This,decibel)	\
+    ( (This)->lpVtbl -> GetInputTalkbackGain(This,decibel) ) 
+
+#define IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3_SetInputTalkbackGain(This,decibel)	\
+    ( (This)->lpVtbl -> SetInputTalkbackGain(This,decibel) ) 
+
+#define IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3_GetInputSidetoneGain(This,decibel)	\
+    ( (This)->lpVtbl -> GetInputSidetoneGain(This,decibel) ) 
+
+#define IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3_SetInputSidetoneGain(This,decibel)	\
+    ( (This)->lpVtbl -> SetInputSidetoneGain(This,decibel) ) 
+
+#define IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3_AddCallback(This,callback)	\
+    ( (This)->lpVtbl -> AddCallback(This,callback) ) 
+
+#define IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3_RemoveCallback(This,callback)	\
+    ( (This)->lpVtbl -> RemoveCallback(This,callback) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3_INTERFACE_DEFINED__ */
+
+
+#ifndef __IBMDSwitcherRecordAV_v8_5_3_INTERFACE_DEFINED__
+#define __IBMDSwitcherRecordAV_v8_5_3_INTERFACE_DEFINED__
+
+/* interface IBMDSwitcherRecordAV_v8_5_3 */
+/* [helpstring][uuid][object] */ 
+
+
+EXTERN_C const IID IID_IBMDSwitcherRecordAV_v8_5_3;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("43C5A333-3DF4-4DF2-8F81-0A994CE63315")
+    IBMDSwitcherRecordAV_v8_5_3 : public IUnknown
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE StartRecording( void) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE StopRecording( void) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SwitchDisk( void) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE IsRecording( 
+            /* [out] */ BOOL *recording) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetStatus( 
+            /* [out] */ BMDSwitcherRecordAVState *state,
+            /* [out] */ BMDSwitcherRecordAVError *error) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetFilename( 
+            /* [in] */ BSTR filename) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetFilename( 
+            /* [out] */ BSTR *filename) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetRecordInAllCameras( 
+            /* [in] */ BOOL recordInAllCameras) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetRecordInAllCameras( 
+            /* [out] */ BOOL *recordInAllCameras) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE DoesSupportISORecording( 
+            /* [out] */ BOOL *supportsISORecording) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetRecordAllISOInputs( 
+            /* [in] */ BOOL recordAllISOInputs) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetRecordAllISOInputs( 
+            /* [out] */ BOOL *recordAllISOInputs) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetWorkingSetLimit( 
+            /* [out] */ unsigned int *workingSetLimit) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetWorkingSetDisk( 
+            /* [in] */ unsigned int workingSetIndex,
+            /* [in] */ BMDSwitcherRecordDiskId diskId) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetWorkingSetDisk( 
+            /* [in] */ unsigned int workingSetIndex,
+            /* [out] */ BMDSwitcherRecordDiskId *diskId) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetActiveDiskIndex( 
+            /* [out] */ unsigned int *workingSetIndex) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE RequestDuration( void) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetDuration( 
+            /* [out] */ unsigned char *hours,
+            /* [out] */ unsigned char *minutes,
+            /* [out] */ unsigned char *seconds,
+            /* [out] */ unsigned char *frames,
+            /* [out] */ BOOL *dropFrame) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetTotalRecordingTimeAvailable( 
+            /* [out] */ unsigned int *totalRecordingTimeAvailable) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE CreateIterator( 
+            /* [in] */ REFIID iid,
+            /* [out] */ LPVOID *ppv) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE AddCallback( 
+            /* [in] */ IBMDSwitcherRecordAVCallback *callback) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE RemoveCallback( 
+            /* [in] */ IBMDSwitcherRecordAVCallback *callback) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct IBMDSwitcherRecordAV_v8_5_3Vtbl
+    {
+        BEGIN_INTERFACE
+        
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            IBMDSwitcherRecordAV_v8_5_3 * This,
+            /* [in] */ REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            IBMDSwitcherRecordAV_v8_5_3 * This);
+        
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            IBMDSwitcherRecordAV_v8_5_3 * This);
+        
+        HRESULT ( STDMETHODCALLTYPE *StartRecording )( 
+            IBMDSwitcherRecordAV_v8_5_3 * This);
+        
+        HRESULT ( STDMETHODCALLTYPE *StopRecording )( 
+            IBMDSwitcherRecordAV_v8_5_3 * This);
+        
+        HRESULT ( STDMETHODCALLTYPE *SwitchDisk )( 
+            IBMDSwitcherRecordAV_v8_5_3 * This);
+        
+        HRESULT ( STDMETHODCALLTYPE *IsRecording )( 
+            IBMDSwitcherRecordAV_v8_5_3 * This,
+            /* [out] */ BOOL *recording);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetStatus )( 
+            IBMDSwitcherRecordAV_v8_5_3 * This,
+            /* [out] */ BMDSwitcherRecordAVState *state,
+            /* [out] */ BMDSwitcherRecordAVError *error);
+        
+        HRESULT ( STDMETHODCALLTYPE *SetFilename )( 
+            IBMDSwitcherRecordAV_v8_5_3 * This,
+            /* [in] */ BSTR filename);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetFilename )( 
+            IBMDSwitcherRecordAV_v8_5_3 * This,
+            /* [out] */ BSTR *filename);
+        
+        HRESULT ( STDMETHODCALLTYPE *SetRecordInAllCameras )( 
+            IBMDSwitcherRecordAV_v8_5_3 * This,
+            /* [in] */ BOOL recordInAllCameras);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetRecordInAllCameras )( 
+            IBMDSwitcherRecordAV_v8_5_3 * This,
+            /* [out] */ BOOL *recordInAllCameras);
+        
+        HRESULT ( STDMETHODCALLTYPE *DoesSupportISORecording )( 
+            IBMDSwitcherRecordAV_v8_5_3 * This,
+            /* [out] */ BOOL *supportsISORecording);
+        
+        HRESULT ( STDMETHODCALLTYPE *SetRecordAllISOInputs )( 
+            IBMDSwitcherRecordAV_v8_5_3 * This,
+            /* [in] */ BOOL recordAllISOInputs);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetRecordAllISOInputs )( 
+            IBMDSwitcherRecordAV_v8_5_3 * This,
+            /* [out] */ BOOL *recordAllISOInputs);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetWorkingSetLimit )( 
+            IBMDSwitcherRecordAV_v8_5_3 * This,
+            /* [out] */ unsigned int *workingSetLimit);
+        
+        HRESULT ( STDMETHODCALLTYPE *SetWorkingSetDisk )( 
+            IBMDSwitcherRecordAV_v8_5_3 * This,
+            /* [in] */ unsigned int workingSetIndex,
+            /* [in] */ BMDSwitcherRecordDiskId diskId);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetWorkingSetDisk )( 
+            IBMDSwitcherRecordAV_v8_5_3 * This,
+            /* [in] */ unsigned int workingSetIndex,
+            /* [out] */ BMDSwitcherRecordDiskId *diskId);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetActiveDiskIndex )( 
+            IBMDSwitcherRecordAV_v8_5_3 * This,
+            /* [out] */ unsigned int *workingSetIndex);
+        
+        HRESULT ( STDMETHODCALLTYPE *RequestDuration )( 
+            IBMDSwitcherRecordAV_v8_5_3 * This);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetDuration )( 
+            IBMDSwitcherRecordAV_v8_5_3 * This,
+            /* [out] */ unsigned char *hours,
+            /* [out] */ unsigned char *minutes,
+            /* [out] */ unsigned char *seconds,
+            /* [out] */ unsigned char *frames,
+            /* [out] */ BOOL *dropFrame);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetTotalRecordingTimeAvailable )( 
+            IBMDSwitcherRecordAV_v8_5_3 * This,
+            /* [out] */ unsigned int *totalRecordingTimeAvailable);
+        
+        HRESULT ( STDMETHODCALLTYPE *CreateIterator )( 
+            IBMDSwitcherRecordAV_v8_5_3 * This,
+            /* [in] */ REFIID iid,
+            /* [out] */ LPVOID *ppv);
+        
+        HRESULT ( STDMETHODCALLTYPE *AddCallback )( 
+            IBMDSwitcherRecordAV_v8_5_3 * This,
+            /* [in] */ IBMDSwitcherRecordAVCallback *callback);
+        
+        HRESULT ( STDMETHODCALLTYPE *RemoveCallback )( 
+            IBMDSwitcherRecordAV_v8_5_3 * This,
+            /* [in] */ IBMDSwitcherRecordAVCallback *callback);
+        
+        END_INTERFACE
+    } IBMDSwitcherRecordAV_v8_5_3Vtbl;
+
+    interface IBMDSwitcherRecordAV_v8_5_3
+    {
+        CONST_VTBL struct IBMDSwitcherRecordAV_v8_5_3Vtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define IBMDSwitcherRecordAV_v8_5_3_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define IBMDSwitcherRecordAV_v8_5_3_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define IBMDSwitcherRecordAV_v8_5_3_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define IBMDSwitcherRecordAV_v8_5_3_StartRecording(This)	\
+    ( (This)->lpVtbl -> StartRecording(This) ) 
+
+#define IBMDSwitcherRecordAV_v8_5_3_StopRecording(This)	\
+    ( (This)->lpVtbl -> StopRecording(This) ) 
+
+#define IBMDSwitcherRecordAV_v8_5_3_SwitchDisk(This)	\
+    ( (This)->lpVtbl -> SwitchDisk(This) ) 
+
+#define IBMDSwitcherRecordAV_v8_5_3_IsRecording(This,recording)	\
+    ( (This)->lpVtbl -> IsRecording(This,recording) ) 
+
+#define IBMDSwitcherRecordAV_v8_5_3_GetStatus(This,state,error)	\
+    ( (This)->lpVtbl -> GetStatus(This,state,error) ) 
+
+#define IBMDSwitcherRecordAV_v8_5_3_SetFilename(This,filename)	\
+    ( (This)->lpVtbl -> SetFilename(This,filename) ) 
+
+#define IBMDSwitcherRecordAV_v8_5_3_GetFilename(This,filename)	\
+    ( (This)->lpVtbl -> GetFilename(This,filename) ) 
+
+#define IBMDSwitcherRecordAV_v8_5_3_SetRecordInAllCameras(This,recordInAllCameras)	\
+    ( (This)->lpVtbl -> SetRecordInAllCameras(This,recordInAllCameras) ) 
+
+#define IBMDSwitcherRecordAV_v8_5_3_GetRecordInAllCameras(This,recordInAllCameras)	\
+    ( (This)->lpVtbl -> GetRecordInAllCameras(This,recordInAllCameras) ) 
+
+#define IBMDSwitcherRecordAV_v8_5_3_DoesSupportISORecording(This,supportsISORecording)	\
+    ( (This)->lpVtbl -> DoesSupportISORecording(This,supportsISORecording) ) 
+
+#define IBMDSwitcherRecordAV_v8_5_3_SetRecordAllISOInputs(This,recordAllISOInputs)	\
+    ( (This)->lpVtbl -> SetRecordAllISOInputs(This,recordAllISOInputs) ) 
+
+#define IBMDSwitcherRecordAV_v8_5_3_GetRecordAllISOInputs(This,recordAllISOInputs)	\
+    ( (This)->lpVtbl -> GetRecordAllISOInputs(This,recordAllISOInputs) ) 
+
+#define IBMDSwitcherRecordAV_v8_5_3_GetWorkingSetLimit(This,workingSetLimit)	\
+    ( (This)->lpVtbl -> GetWorkingSetLimit(This,workingSetLimit) ) 
+
+#define IBMDSwitcherRecordAV_v8_5_3_SetWorkingSetDisk(This,workingSetIndex,diskId)	\
+    ( (This)->lpVtbl -> SetWorkingSetDisk(This,workingSetIndex,diskId) ) 
+
+#define IBMDSwitcherRecordAV_v8_5_3_GetWorkingSetDisk(This,workingSetIndex,diskId)	\
+    ( (This)->lpVtbl -> GetWorkingSetDisk(This,workingSetIndex,diskId) ) 
+
+#define IBMDSwitcherRecordAV_v8_5_3_GetActiveDiskIndex(This,workingSetIndex)	\
+    ( (This)->lpVtbl -> GetActiveDiskIndex(This,workingSetIndex) ) 
+
+#define IBMDSwitcherRecordAV_v8_5_3_RequestDuration(This)	\
+    ( (This)->lpVtbl -> RequestDuration(This) ) 
+
+#define IBMDSwitcherRecordAV_v8_5_3_GetDuration(This,hours,minutes,seconds,frames,dropFrame)	\
+    ( (This)->lpVtbl -> GetDuration(This,hours,minutes,seconds,frames,dropFrame) ) 
+
+#define IBMDSwitcherRecordAV_v8_5_3_GetTotalRecordingTimeAvailable(This,totalRecordingTimeAvailable)	\
+    ( (This)->lpVtbl -> GetTotalRecordingTimeAvailable(This,totalRecordingTimeAvailable) ) 
+
+#define IBMDSwitcherRecordAV_v8_5_3_CreateIterator(This,iid,ppv)	\
+    ( (This)->lpVtbl -> CreateIterator(This,iid,ppv) ) 
+
+#define IBMDSwitcherRecordAV_v8_5_3_AddCallback(This,callback)	\
+    ( (This)->lpVtbl -> AddCallback(This,callback) ) 
+
+#define IBMDSwitcherRecordAV_v8_5_3_RemoveCallback(This,callback)	\
+    ( (This)->lpVtbl -> RemoveCallback(This,callback) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __IBMDSwitcherRecordAV_v8_5_3_INTERFACE_DEFINED__ */
+
+
+#ifndef __IBMDSwitcherStreamRTMP_v8_5_3_INTERFACE_DEFINED__
+#define __IBMDSwitcherStreamRTMP_v8_5_3_INTERFACE_DEFINED__
+
+/* interface IBMDSwitcherStreamRTMP_v8_5_3 */
+/* [helpstring][uuid][object] */ 
+
+
+EXTERN_C const IID IID_IBMDSwitcherStreamRTMP_v8_5_3;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("89A72582-A54B-40B6-9CFB-9B750D6C5DD9")
+    IBMDSwitcherStreamRTMP_v8_5_3 : public IUnknown
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE StartStreaming( void) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE StopStreaming( void) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE IsStreaming( 
+            /* [out] */ BOOL *streaming) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetStatus( 
+            /* [out] */ BMDSwitcherStreamRTMPState *state,
+            /* [out] */ BMDSwitcherStreamRTMPError *error) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetServiceName( 
+            /* [in] */ BSTR serviceName) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetServiceName( 
+            /* [out] */ BSTR *serviceName) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetUrl( 
+            /* [in] */ BSTR url) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetUrl( 
+            /* [out] */ BSTR *url) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetKey( 
+            /* [in] */ BSTR url) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetKey( 
+            /* [out] */ BSTR *key) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetVideoBitrates( 
+            /* [in] */ unsigned int lowBitrate,
+            /* [in] */ unsigned int highBitrate) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetVideoBitrates( 
+            /* [out] */ unsigned int *lowBitRate,
+            /* [out] */ unsigned int *highBitRate) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetAudioBitrates( 
+            /* [in] */ unsigned int lowBitrate,
+            /* [in] */ unsigned int highBitrate) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetAudioBitrates( 
+            /* [out] */ unsigned int *lowBitRate,
+            /* [out] */ unsigned int *highBitRate) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE RequestDuration( void) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetDuration( 
+            /* [out] */ unsigned char *hours,
+            /* [out] */ unsigned char *minutes,
+            /* [out] */ unsigned char *seconds,
+            /* [out] */ unsigned char *frames,
+            /* [out] */ BOOL *dropFrame) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetEncodingBitrate( 
+            /* [out] */ unsigned int *encodingBitrate) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetCacheUsed( 
+            /* [out] */ double *cacheUsed) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetAuthentication( 
+            /* [in] */ BSTR username,
+            /* [in] */ BSTR password) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetAuthentication( 
+            /* [out] */ BSTR *username,
+            /* [out] */ BSTR *password) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetLowLatency( 
+            /* [in] */ BOOL lowLatency) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetLowLatency( 
+            /* [out] */ BOOL *lowLatency) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE AddCallback( 
+            /* [in] */ IBMDSwitcherStreamRTMPCallback *callback) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE RemoveCallback( 
+            /* [in] */ IBMDSwitcherStreamRTMPCallback *callback) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct IBMDSwitcherStreamRTMP_v8_5_3Vtbl
+    {
+        BEGIN_INTERFACE
+        
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            IBMDSwitcherStreamRTMP_v8_5_3 * This,
+            /* [in] */ REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            IBMDSwitcherStreamRTMP_v8_5_3 * This);
+        
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            IBMDSwitcherStreamRTMP_v8_5_3 * This);
+        
+        HRESULT ( STDMETHODCALLTYPE *StartStreaming )( 
+            IBMDSwitcherStreamRTMP_v8_5_3 * This);
+        
+        HRESULT ( STDMETHODCALLTYPE *StopStreaming )( 
+            IBMDSwitcherStreamRTMP_v8_5_3 * This);
+        
+        HRESULT ( STDMETHODCALLTYPE *IsStreaming )( 
+            IBMDSwitcherStreamRTMP_v8_5_3 * This,
+            /* [out] */ BOOL *streaming);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetStatus )( 
+            IBMDSwitcherStreamRTMP_v8_5_3 * This,
+            /* [out] */ BMDSwitcherStreamRTMPState *state,
+            /* [out] */ BMDSwitcherStreamRTMPError *error);
+        
+        HRESULT ( STDMETHODCALLTYPE *SetServiceName )( 
+            IBMDSwitcherStreamRTMP_v8_5_3 * This,
+            /* [in] */ BSTR serviceName);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetServiceName )( 
+            IBMDSwitcherStreamRTMP_v8_5_3 * This,
+            /* [out] */ BSTR *serviceName);
+        
+        HRESULT ( STDMETHODCALLTYPE *SetUrl )( 
+            IBMDSwitcherStreamRTMP_v8_5_3 * This,
+            /* [in] */ BSTR url);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetUrl )( 
+            IBMDSwitcherStreamRTMP_v8_5_3 * This,
+            /* [out] */ BSTR *url);
+        
+        HRESULT ( STDMETHODCALLTYPE *SetKey )( 
+            IBMDSwitcherStreamRTMP_v8_5_3 * This,
+            /* [in] */ BSTR url);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetKey )( 
+            IBMDSwitcherStreamRTMP_v8_5_3 * This,
+            /* [out] */ BSTR *key);
+        
+        HRESULT ( STDMETHODCALLTYPE *SetVideoBitrates )( 
+            IBMDSwitcherStreamRTMP_v8_5_3 * This,
+            /* [in] */ unsigned int lowBitrate,
+            /* [in] */ unsigned int highBitrate);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetVideoBitrates )( 
+            IBMDSwitcherStreamRTMP_v8_5_3 * This,
+            /* [out] */ unsigned int *lowBitRate,
+            /* [out] */ unsigned int *highBitRate);
+        
+        HRESULT ( STDMETHODCALLTYPE *SetAudioBitrates )( 
+            IBMDSwitcherStreamRTMP_v8_5_3 * This,
+            /* [in] */ unsigned int lowBitrate,
+            /* [in] */ unsigned int highBitrate);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetAudioBitrates )( 
+            IBMDSwitcherStreamRTMP_v8_5_3 * This,
+            /* [out] */ unsigned int *lowBitRate,
+            /* [out] */ unsigned int *highBitRate);
+        
+        HRESULT ( STDMETHODCALLTYPE *RequestDuration )( 
+            IBMDSwitcherStreamRTMP_v8_5_3 * This);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetDuration )( 
+            IBMDSwitcherStreamRTMP_v8_5_3 * This,
+            /* [out] */ unsigned char *hours,
+            /* [out] */ unsigned char *minutes,
+            /* [out] */ unsigned char *seconds,
+            /* [out] */ unsigned char *frames,
+            /* [out] */ BOOL *dropFrame);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetEncodingBitrate )( 
+            IBMDSwitcherStreamRTMP_v8_5_3 * This,
+            /* [out] */ unsigned int *encodingBitrate);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetCacheUsed )( 
+            IBMDSwitcherStreamRTMP_v8_5_3 * This,
+            /* [out] */ double *cacheUsed);
+        
+        HRESULT ( STDMETHODCALLTYPE *SetAuthentication )( 
+            IBMDSwitcherStreamRTMP_v8_5_3 * This,
+            /* [in] */ BSTR username,
+            /* [in] */ BSTR password);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetAuthentication )( 
+            IBMDSwitcherStreamRTMP_v8_5_3 * This,
+            /* [out] */ BSTR *username,
+            /* [out] */ BSTR *password);
+        
+        HRESULT ( STDMETHODCALLTYPE *SetLowLatency )( 
+            IBMDSwitcherStreamRTMP_v8_5_3 * This,
+            /* [in] */ BOOL lowLatency);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetLowLatency )( 
+            IBMDSwitcherStreamRTMP_v8_5_3 * This,
+            /* [out] */ BOOL *lowLatency);
+        
+        HRESULT ( STDMETHODCALLTYPE *AddCallback )( 
+            IBMDSwitcherStreamRTMP_v8_5_3 * This,
+            /* [in] */ IBMDSwitcherStreamRTMPCallback *callback);
+        
+        HRESULT ( STDMETHODCALLTYPE *RemoveCallback )( 
+            IBMDSwitcherStreamRTMP_v8_5_3 * This,
+            /* [in] */ IBMDSwitcherStreamRTMPCallback *callback);
+        
+        END_INTERFACE
+    } IBMDSwitcherStreamRTMP_v8_5_3Vtbl;
+
+    interface IBMDSwitcherStreamRTMP_v8_5_3
+    {
+        CONST_VTBL struct IBMDSwitcherStreamRTMP_v8_5_3Vtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define IBMDSwitcherStreamRTMP_v8_5_3_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_5_3_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_5_3_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define IBMDSwitcherStreamRTMP_v8_5_3_StartStreaming(This)	\
+    ( (This)->lpVtbl -> StartStreaming(This) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_5_3_StopStreaming(This)	\
+    ( (This)->lpVtbl -> StopStreaming(This) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_5_3_IsStreaming(This,streaming)	\
+    ( (This)->lpVtbl -> IsStreaming(This,streaming) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_5_3_GetStatus(This,state,error)	\
+    ( (This)->lpVtbl -> GetStatus(This,state,error) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_5_3_SetServiceName(This,serviceName)	\
+    ( (This)->lpVtbl -> SetServiceName(This,serviceName) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_5_3_GetServiceName(This,serviceName)	\
+    ( (This)->lpVtbl -> GetServiceName(This,serviceName) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_5_3_SetUrl(This,url)	\
+    ( (This)->lpVtbl -> SetUrl(This,url) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_5_3_GetUrl(This,url)	\
+    ( (This)->lpVtbl -> GetUrl(This,url) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_5_3_SetKey(This,url)	\
+    ( (This)->lpVtbl -> SetKey(This,url) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_5_3_GetKey(This,key)	\
+    ( (This)->lpVtbl -> GetKey(This,key) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_5_3_SetVideoBitrates(This,lowBitrate,highBitrate)	\
+    ( (This)->lpVtbl -> SetVideoBitrates(This,lowBitrate,highBitrate) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_5_3_GetVideoBitrates(This,lowBitRate,highBitRate)	\
+    ( (This)->lpVtbl -> GetVideoBitrates(This,lowBitRate,highBitRate) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_5_3_SetAudioBitrates(This,lowBitrate,highBitrate)	\
+    ( (This)->lpVtbl -> SetAudioBitrates(This,lowBitrate,highBitrate) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_5_3_GetAudioBitrates(This,lowBitRate,highBitRate)	\
+    ( (This)->lpVtbl -> GetAudioBitrates(This,lowBitRate,highBitRate) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_5_3_RequestDuration(This)	\
+    ( (This)->lpVtbl -> RequestDuration(This) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_5_3_GetDuration(This,hours,minutes,seconds,frames,dropFrame)	\
+    ( (This)->lpVtbl -> GetDuration(This,hours,minutes,seconds,frames,dropFrame) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_5_3_GetEncodingBitrate(This,encodingBitrate)	\
+    ( (This)->lpVtbl -> GetEncodingBitrate(This,encodingBitrate) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_5_3_GetCacheUsed(This,cacheUsed)	\
+    ( (This)->lpVtbl -> GetCacheUsed(This,cacheUsed) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_5_3_SetAuthentication(This,username,password)	\
+    ( (This)->lpVtbl -> SetAuthentication(This,username,password) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_5_3_GetAuthentication(This,username,password)	\
+    ( (This)->lpVtbl -> GetAuthentication(This,username,password) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_5_3_SetLowLatency(This,lowLatency)	\
+    ( (This)->lpVtbl -> SetLowLatency(This,lowLatency) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_5_3_GetLowLatency(This,lowLatency)	\
+    ( (This)->lpVtbl -> GetLowLatency(This,lowLatency) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_5_3_AddCallback(This,callback)	\
+    ( (This)->lpVtbl -> AddCallback(This,callback) ) 
+
+#define IBMDSwitcherStreamRTMP_v8_5_3_RemoveCallback(This,callback)	\
+    ( (This)->lpVtbl -> RemoveCallback(This,callback) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __IBMDSwitcherStreamRTMP_v8_5_3_INTERFACE_DEFINED__ */
+
+
+#ifndef __IBMDSwitcherFairlightAudioHeadphoneOutputIterator_v8_5_3_INTERFACE_DEFINED__
+#define __IBMDSwitcherFairlightAudioHeadphoneOutputIterator_v8_5_3_INTERFACE_DEFINED__
+
+/* interface IBMDSwitcherFairlightAudioHeadphoneOutputIterator_v8_5_3 */
+/* [helpstring][uuid][object] */ 
+
+
+EXTERN_C const IID IID_IBMDSwitcherFairlightAudioHeadphoneOutputIterator_v8_5_3;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("63EED6B1-D574-4312-90B4-F6DEBC290701")
+    IBMDSwitcherFairlightAudioHeadphoneOutputIterator_v8_5_3 : public IUnknown
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE Next( 
+            /* [out] */ IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3 **audioHeadphoneOutput) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct IBMDSwitcherFairlightAudioHeadphoneOutputIterator_v8_5_3Vtbl
+    {
+        BEGIN_INTERFACE
+        
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            IBMDSwitcherFairlightAudioHeadphoneOutputIterator_v8_5_3 * This,
+            /* [in] */ REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            IBMDSwitcherFairlightAudioHeadphoneOutputIterator_v8_5_3 * This);
+        
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            IBMDSwitcherFairlightAudioHeadphoneOutputIterator_v8_5_3 * This);
+        
+        HRESULT ( STDMETHODCALLTYPE *Next )( 
+            IBMDSwitcherFairlightAudioHeadphoneOutputIterator_v8_5_3 * This,
+            /* [out] */ IBMDSwitcherFairlightAudioHeadphoneOutput_v8_5_3 **audioHeadphoneOutput);
+        
+        END_INTERFACE
+    } IBMDSwitcherFairlightAudioHeadphoneOutputIterator_v8_5_3Vtbl;
+
+    interface IBMDSwitcherFairlightAudioHeadphoneOutputIterator_v8_5_3
+    {
+        CONST_VTBL struct IBMDSwitcherFairlightAudioHeadphoneOutputIterator_v8_5_3Vtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define IBMDSwitcherFairlightAudioHeadphoneOutputIterator_v8_5_3_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define IBMDSwitcherFairlightAudioHeadphoneOutputIterator_v8_5_3_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define IBMDSwitcherFairlightAudioHeadphoneOutputIterator_v8_5_3_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define IBMDSwitcherFairlightAudioHeadphoneOutputIterator_v8_5_3_Next(This,audioHeadphoneOutput)	\
+    ( (This)->lpVtbl -> Next(This,audioHeadphoneOutput) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __IBMDSwitcherFairlightAudioHeadphoneOutputIterator_v8_5_3_INTERFACE_DEFINED__ */
+
+
+#ifndef __IBMDSwitcherFairlightAnalogAudioInput_v8_5_3_INTERFACE_DEFINED__
+#define __IBMDSwitcherFairlightAnalogAudioInput_v8_5_3_INTERFACE_DEFINED__
+
+/* interface IBMDSwitcherFairlightAnalogAudioInput_v8_5_3 */
+/* [helpstring][uuid][object] */ 
+
+
+EXTERN_C const IID IID_IBMDSwitcherFairlightAnalogAudioInput_v8_5_3;
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("C3F347F3-49BB-4832-835C-E329FBF5707E")
+    IBMDSwitcherFairlightAnalogAudioInput_v8_5_3 : public IUnknown
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE GetSupportedInputLevels( 
+            /* [out] */ BMDSwitcherFairlightAudioAnalogInputLevel *levels) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetInputLevel( 
+            /* [out] */ BMDSwitcherFairlightAudioAnalogInputLevel *level) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE SetInputLevel( 
+            /* [in] */ BMDSwitcherFairlightAudioAnalogInputLevel level) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE AddCallback( 
+            /* [in] */ IBMDSwitcherFairlightAnalogAudioInputCallback *callback) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE RemoveCallback( 
+            /* [in] */ IBMDSwitcherFairlightAnalogAudioInputCallback *callback) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct IBMDSwitcherFairlightAnalogAudioInput_v8_5_3Vtbl
+    {
+        BEGIN_INTERFACE
+        
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            IBMDSwitcherFairlightAnalogAudioInput_v8_5_3 * This,
+            /* [in] */ REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            IBMDSwitcherFairlightAnalogAudioInput_v8_5_3 * This);
+        
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            IBMDSwitcherFairlightAnalogAudioInput_v8_5_3 * This);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetSupportedInputLevels )( 
+            IBMDSwitcherFairlightAnalogAudioInput_v8_5_3 * This,
+            /* [out] */ BMDSwitcherFairlightAudioAnalogInputLevel *levels);
+        
+        HRESULT ( STDMETHODCALLTYPE *GetInputLevel )( 
+            IBMDSwitcherFairlightAnalogAudioInput_v8_5_3 * This,
+            /* [out] */ BMDSwitcherFairlightAudioAnalogInputLevel *level);
+        
+        HRESULT ( STDMETHODCALLTYPE *SetInputLevel )( 
+            IBMDSwitcherFairlightAnalogAudioInput_v8_5_3 * This,
+            /* [in] */ BMDSwitcherFairlightAudioAnalogInputLevel level);
+        
+        HRESULT ( STDMETHODCALLTYPE *AddCallback )( 
+            IBMDSwitcherFairlightAnalogAudioInput_v8_5_3 * This,
+            /* [in] */ IBMDSwitcherFairlightAnalogAudioInputCallback *callback);
+        
+        HRESULT ( STDMETHODCALLTYPE *RemoveCallback )( 
+            IBMDSwitcherFairlightAnalogAudioInput_v8_5_3 * This,
+            /* [in] */ IBMDSwitcherFairlightAnalogAudioInputCallback *callback);
+        
+        END_INTERFACE
+    } IBMDSwitcherFairlightAnalogAudioInput_v8_5_3Vtbl;
+
+    interface IBMDSwitcherFairlightAnalogAudioInput_v8_5_3
+    {
+        CONST_VTBL struct IBMDSwitcherFairlightAnalogAudioInput_v8_5_3Vtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define IBMDSwitcherFairlightAnalogAudioInput_v8_5_3_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define IBMDSwitcherFairlightAnalogAudioInput_v8_5_3_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define IBMDSwitcherFairlightAnalogAudioInput_v8_5_3_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define IBMDSwitcherFairlightAnalogAudioInput_v8_5_3_GetSupportedInputLevels(This,levels)	\
+    ( (This)->lpVtbl -> GetSupportedInputLevels(This,levels) ) 
+
+#define IBMDSwitcherFairlightAnalogAudioInput_v8_5_3_GetInputLevel(This,level)	\
+    ( (This)->lpVtbl -> GetInputLevel(This,level) ) 
+
+#define IBMDSwitcherFairlightAnalogAudioInput_v8_5_3_SetInputLevel(This,level)	\
+    ( (This)->lpVtbl -> SetInputLevel(This,level) ) 
+
+#define IBMDSwitcherFairlightAnalogAudioInput_v8_5_3_AddCallback(This,callback)	\
+    ( (This)->lpVtbl -> AddCallback(This,callback) ) 
+
+#define IBMDSwitcherFairlightAnalogAudioInput_v8_5_3_RemoveCallback(This,callback)	\
+    ( (This)->lpVtbl -> RemoveCallback(This,callback) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __IBMDSwitcherFairlightAnalogAudioInput_v8_5_3_INTERFACE_DEFINED__ */
 
 #endif /* __BMDSwitcherAPI_LIBRARY_DEFINED__ */
 

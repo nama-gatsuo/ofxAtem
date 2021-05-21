@@ -8,7 +8,7 @@ This is an wrapper of [ATEM Switchers SDK](https://www.blackmagicdesign.com/deve
 * Monitoring switching status of hardware
 
 ## Prerequisists
-* [ATEM Switchers 8.4 Update](https://www.blackmagicdesign.com/developer/product/atem) is installed
+* [ATEM Switchers 8.6.1 Update](https://www.blackmagicdesign.com/developer/product/atem) is installed
 
 
 ## Current Restrictions
